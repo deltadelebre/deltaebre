@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "ref": "r1",
+      "label": "Ruta de les Llacunes (hemidelta sud)",
+      "photo": ""
+    },
+    {
+      "ref": "r2",
+      "label": "Deltebre · Riumar · Garxal · Far",
+      "photo": ""
+    },
+    {
+      "ref": "r3",
+      "label": "Deltebre · Marquesa · Punta del Fangar",
+      "photo": ""
+    },
+    {
+      "ref": "r4",
+      "label": "Camí de Sirga del Delta (riu Ebre)",
+      "photo": ""
+    },
+    {
+      "ref": "r5",
+      "label": "La Ràpita · Poblenou · Ullals de Baltasar",
+      "photo": ""
+    },
+    {
+      "ref": "r6",
+      "label": "L'Aldea · Camarles · Bassa de les Olles · l'Ampolla",
+      "photo": ""
+    }
+  ]
+}

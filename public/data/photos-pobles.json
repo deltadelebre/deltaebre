@@ -1,0 +1,44 @@
+{
+  "items": [
+    {
+      "ref": "0",
+      "label": "Deltebre",
+      "photo": ""
+    },
+    {
+      "ref": "1",
+      "label": "Sant Jaume d'Enveja",
+      "photo": ""
+    },
+    {
+      "ref": "2",
+      "label": "Amposta",
+      "photo": ""
+    },
+    {
+      "ref": "3",
+      "label": "Sant Carles de la Ràpita",
+      "photo": ""
+    },
+    {
+      "ref": "4",
+      "label": "L'Ampolla",
+      "photo": ""
+    },
+    {
+      "ref": "5",
+      "label": "Poblenou del Delta",
+      "photo": ""
+    },
+    {
+      "ref": "6",
+      "label": "Alcanar i les Cases (fora del Delta)",
+      "photo": ""
+    },
+    {
+      "ref": "7",
+      "label": "L'Aldea i Camarles",
+      "photo": ""
+    }
+  ]
+}

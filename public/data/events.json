@@ -350,6 +350,33 @@
         "NL": "Rijstoogst (september-oktober)",
         "PT": "Colheita do arroz (setembro-outubro)"
       }
+    },
+    {
+      "id": "ev14",
+      "month": 9,
+      "dayFrom": 18,
+      "dayTo": 20,
+      "dayLabel": "18-20",
+      "type": "natura",
+      "ic": "🦩",
+      "town": {
+        "CA": "MónNatura Delta (Amposta)",
+        "ES": "MónNatura Delta (Amposta)",
+        "EN": "MónNatura Delta (Amposta)",
+        "FR": "MónNatura Delta (Amposta)",
+        "DE": "MónNatura Delta (Amposta)",
+        "NL": "MónNatura Delta (Amposta)",
+        "PT": "MónNatura Delta (Amposta)"
+      },
+      "name": {
+        "CA": "Delta Birding Festival — 12a edició",
+        "ES": "Delta Birding Festival — 12ª edición",
+        "EN": "Delta Birding Festival — 12th edition",
+        "FR": "Delta Birding Festival — 12e édition",
+        "DE": "Delta Birding Festival — 12. Ausgabe",
+        "NL": "Delta Birding Festival — 12e editie",
+        "PT": "Delta Birding Festival — 12.ª edição"
+      }
     }
   ]
 }

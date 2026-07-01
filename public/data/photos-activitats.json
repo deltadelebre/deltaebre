@@ -1,0 +1,49 @@
+{
+  "items": [
+    {
+      "ref": "0",
+      "label": "Bicicleta",
+      "photo": ""
+    },
+    {
+      "ref": "1",
+      "label": "Kayak i piragua",
+      "photo": ""
+    },
+    {
+      "ref": "2",
+      "label": "Passeig en barca",
+      "photo": ""
+    },
+    {
+      "ref": "3",
+      "label": "Kitesurf i windsurf",
+      "photo": ""
+    },
+    {
+      "ref": "4",
+      "label": "Observació d'aus",
+      "photo": ""
+    },
+    {
+      "ref": "5",
+      "label": "Excursió en 4x4",
+      "photo": ""
+    },
+    {
+      "ref": "6",
+      "label": "Paddle surf (SUP)",
+      "photo": ""
+    },
+    {
+      "ref": "7",
+      "label": "A cavall",
+      "photo": ""
+    },
+    {
+      "ref": "8",
+      "label": "Senderisme costaner · GR-92",
+      "photo": ""
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 import { D_REST, setRest, D_BEACH, D_ALLOT, D_PROD, D_EVENTS, setEvents, D_PRAC, D_NAT, D_ACT, D_PUEB, D_HIST, D_BICI, D_MUSEUS, D_FAM, D_LOCALS, D_BIRDS, D_HIDES, D_PESCA, D_PISC, D_RICE, D_MERCATS, D_RUTES_EXP, D_HERITAGE, D_TRANSPORT_ITEMS } from "./data.js";
-import { D_CUISINE, D_TAGS, D_I18N, LANG_META, DAYS, ALLOT_T, V, setV, EMERGENCY_NUMS, WMO_ICONS, CMS_DATA_BASE, AI_PLANNER_ENDPOINT, A11Y_DECLARATION_URL, A11Y_CONTACT_EMAIL, A11Y_COMPLAINT_URL, store } from "./config.js";
+import { D_CUISINE, D_TAGS, D_I18N, LANG_META, DAYS, ALLOT_T, V, setV, EMERGENCY_NUMS, WMO_ICONS, CMS_DATA_BASE, AI_PLANNER_ENDPOINT, store } from "./config.js";
 
 
 /* ═══════════════════════════════════════════════════════════════
@@ -17,7 +17,7 @@ class ErrorBoundary extends Component {
     const L = M[(typeof navigator!=="undefined" && navigator.language ? navigator.language.slice(0,2).toLowerCase() : "ca")] || M.ca;
     if (this.state.error) return (
       <div style={{minHeight:"100vh",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",padding:24,background:"#06303a",color:"#eef7f9",fontFamily:"-apple-system,sans-serif"}}>
-        <div style={{fontSize:48,marginBottom:16}}>🦩</div>
+        <div style={{fontSize:48,marginBottom:16}} aria-hidden="true">🦩</div>
         <h1 style={{fontSize:18,fontFamily:"Georgia,serif",marginBottom:8}}>{L.t}</h1>
         <p style={{fontSize:13,opacity:.5,textAlign:"center",maxWidth:280,marginBottom:20}}>{L.b}</p>
         <button onClick={()=>{this.setState({error:null});window.location.reload();}} style={{padding:"10px 24px",borderRadius:12,border:"1px solid rgba(93,202,165,.4)",background:"rgba(93,202,165,.15)",color:"#5dcaa5",fontSize:14,fontWeight:600,cursor:"pointer"}}>{L.r}</button>
@@ -75,8 +75,8 @@ function Header({title, onBack, lang, onLangClick, onThemeToggle, dark}) {
         {title && <span className="text-sm opacity-50 font-medium">{title}</span>}
       </div>
       <div className="flex items-center gap-2">
-        {onThemeToggle && <button onClick={onThemeToggle} aria-label="Toggle theme" className="w-9 h-9 rounded-xl flex items-center justify-center" style={{background:V.w10,border:`1px solid ${V.w14}`}}><Ic d={dark?I.sun:I.moon} size={15}/></button>}
-        {onLangClick && <button onClick={onLangClick} className="px-2.5 py-1.5 rounded-xl text-xs font-mono font-bold" style={{background:V.w10,border:`1px solid ${V.w14}`}}>{lang}</button>}
+        {onThemeToggle && <button onClick={onThemeToggle} aria-label={({CA:"Canvia el tema",ES:"Cambiar tema",EN:"Toggle theme",FR:"Changer de thème",DE:"Thema wechseln",NL:"Thema wisselen",PT:"Mudar tema"})[lang]||"Toggle theme"} className="w-9 h-9 rounded-xl flex items-center justify-center" style={{background:V.w10,border:`1px solid ${V.w14}`}}><Ic d={dark?I.sun:I.moon} size={15}/></button>}
+        {onLangClick && <button onClick={onLangClick} aria-label={({CA:"Canvia l'idioma",ES:"Cambiar idioma",EN:"Change language",FR:"Changer de langue",DE:"Sprache ändern",NL:"Taal wijzigen",PT:"Mudar idioma"})[lang]||"Change language"} className="px-2.5 py-1.5 rounded-xl text-xs font-mono font-bold" style={{background:V.w10,border:`1px solid ${V.w14}`}}>{lang}</button>}
       </div>
     </div>
   );
@@ -86,12 +86,12 @@ function Rating({r, n}) {
   return <span className="inline-flex items-center gap-1 text-sm font-semibold" style={{color:"#fac775"}}><svg width="13" height="13" viewBox="0 0 24 24" fill="#fac775" stroke="none"><path d={I.star}/></svg>{r?.toFixed(1)}{n&&<span className="font-normal opacity-55 text-xs">({n>999?(n/1000).toFixed(1)+'k':n})</span>}</span>;
 }
 
-function SearchBar({value, onChange, placeholder}) {
+function SearchBar({value, onChange, placeholder, lang}) {
   return (
     <div className="relative mb-3">
       <div className="absolute left-3 top-1/2 -translate-y-1/2 opacity-50"><Ic d={I.search} size={15}/></div>
-      <input type="text" aria-label="Search" value={value} onChange={e=>onChange(e.target.value)} placeholder={placeholder||"..."} className="w-full py-2.5 pl-9 pr-9 rounded-xl text-sm outline-none" style={{background:V.w8,border:`1px solid ${V.w15}`,color:"inherit"}}/>
-      {value && <button onClick={()=>onChange("")} className="absolute right-2.5 top-1/2 -translate-y-1/2 text-xs opacity-55">✕</button>}
+      <input type="text" aria-label={(placeholder||"Search").replace(/\.+$/,"")} value={value} onChange={e=>onChange(e.target.value)} placeholder={placeholder||"..."} className="w-full py-2.5 pl-9 pr-9 rounded-xl text-sm outline-none" style={{background:V.w8,border:`1px solid ${V.w15}`,color:"inherit"}}/>
+      {value && <button onClick={()=>onChange("")} aria-label={({CA:"Esborra",ES:"Borrar",EN:"Clear",FR:"Effacer",DE:"Löschen",NL:"Wissen",PT:"Limpar"})[lang]||"Clear"} className="absolute right-2.5 top-1/2 -translate-y-1/2 text-xs opacity-55">✕</button>}
     </div>
   );
 }
@@ -105,7 +105,7 @@ function FavBtn({on, toggle, cls=""}) {
 }
 
 function Empty({icon, text}) {
-  return <div className="py-10 text-center opacity-55"><div className="text-3xl mb-2">{icon||"🔍"}</div><div className="text-sm">{text}</div></div>;
+  return <div className="py-10 text-center opacity-55"><div className="text-3xl mb-2" aria-hidden="true">{icon||"🔍"}</div><div className="text-sm">{text}</div></div>;
 }
 
 /* ¿El valor del camp és una imatge real (no un marcador buit com __PH_N__)? */
@@ -131,7 +131,7 @@ function Thumb({src, emoji, alt, size = 44, emojiCls = "text-2xl"}) {
   const [err, setErr] = useState(false);
   if (isRealPhoto(src) && !err)
     return <img src={src} alt={alt||""} loading="lazy" onError={()=>setErr(true)} className="rounded-xl object-cover shrink-0" style={{width:size,height:size}}/>;
-  return <span className={`${emojiCls} shrink-0`}>{emoji}</span>;
+  return <span aria-hidden="true" className={`${emojiCls} shrink-0`}>{emoji}</span>;
 }
 
 /* Card for generic items (nature, villages, activities, practical, heritage, etc.) */
@@ -307,7 +307,7 @@ function HomeScreen({lang, nav, ui, onLangClick, onThemeToggle, dark}) {
       <div className="max-w-md mx-auto w-full px-5 py-5">
         <Header title="Delta de l'Ebre" onLangClick={onLangClick} lang={lang} onThemeToggle={onThemeToggle} dark={dark}/>
         <div className="flex items-center gap-3 mb-3">
-          <div className="text-3xl">🦩</div>
+          <div className="text-3xl" aria-hidden="true">🦩</div>
           <div><h1 className="text-lg font-semibold" style={{fontFamily:"Georgia,serif",color:V.title}}>{ui.heading}</h1>
             <p className="text-xs opacity-55 mt-0.5">{ui.subtitle}</p></div>
         </div>
@@ -326,26 +326,26 @@ function HomeScreen({lang, nav, ui, onLangClick, onThemeToggle, dark}) {
           autumn:{icon:"🟡",msg:{CA:"La sega de l'arròs — camps daurats i festes!",ES:"La siega del arroz — ¡campos dorados y fiestas!",EN:"Rice harvest — golden fields & festivals!",FR:"Récolte du riz — champs dorés et fêtes!",DE:"Reisernte — goldene Felder und Feste!",NL:"Rijstoogst — gouden velden en feesten!",PT:"Colheita do arroz — campos dourados e festas!"}},
         };const s=m<=1||m===11?"winter":m<=4?"spring":m<=8?"summer":"autumn";const cur=seasons[s];
         return <div className="flex items-center gap-2 rounded-xl px-3 py-2 mb-4" style={{background:"rgba(93,202,165,.08)",border:"1px solid rgba(93,202,165,.15)"}}>
-          <span className="text-lg">{cur.icon}</span><p className="text-xs opacity-60 flex-1">{tr(cur.msg,lang)}</p></div>;})()}
+          <span className="text-lg" aria-hidden="true">{cur.icon}</span><p className="text-xs opacity-60 flex-1">{tr(cur.msg,lang)}</p></div>;})()}
 
         {/* Main 6 categories */}
         <div className="grid grid-cols-3 gap-2 mb-4">
           {cats.map(c=><button key={c.key} onClick={c.go} className="aspect-square rounded-2xl flex flex-col items-center justify-center gap-1.5 transition-all" style={{background:V.w7,border:`1px solid ${V.w14}`}}>
-            <span className="text-2xl">{c.icon}</span>
+            <span className="text-2xl" aria-hidden="true">{c.icon}</span>
             <span className="text-xs font-medium" style={{color:V.fg}}>{ui[c.key]||c.key}</span></button>)}
         </div>
 
         {/* Secondary 6 categories */}
         <div className="grid grid-cols-3 gap-2 mb-4">
           {cats2.map((c,i)=><button key={i} onClick={c.go} className="py-3 rounded-xl flex flex-col items-center gap-1 transition-all" style={{background:V.w4,border:`1px solid ${V.w10}`}}>
-            <span className="text-lg">{c.icon}</span>
+            <span className="text-lg" aria-hidden="true">{c.icon}</span>
             <span className="text-[10px] font-medium opacity-70">{c.label}</span></button>)}
         </div>
 
         {/* Tertiary row: Agenda, Planner, Map */}
         <div className="grid grid-cols-3 gap-2 mb-4">
           {cats3.map((c,i)=><button key={i} onClick={c.go} className="py-2.5 rounded-xl flex items-center justify-center gap-1.5 transition-all" style={{background:V.w4,border:`1px solid ${V.w10}`}}>
-            <span className="text-sm">{c.icon}</span>
+            <span className="text-sm" aria-hidden="true">{c.icon}</span>
             <span className="text-xs font-medium opacity-60">{c.label}</span></button>)}
         </div>
 
@@ -354,11 +354,11 @@ function HomeScreen({lang, nav, ui, onLangClick, onThemeToggle, dark}) {
           <button onClick={()=>nav.push("search")} className="flex items-center gap-2 px-3 py-2.5 rounded-xl" style={{background:"rgba(93,202,165,.12)",border:"1px solid rgba(93,202,165,.35)"}}>
             <Ic d={I.search} size={16}/><span className="text-xs font-medium">{tr({CA:"Cerca",ES:"Buscar",EN:"Search",FR:"Rechercher",DE:"Suchen",NL:"Zoeken",PT:"Pesquisar"},lang)}</span></button>
           <button onClick={()=>nav.push("favs")} className="flex items-center gap-2 px-3 py-2.5 rounded-xl" style={{background:"rgba(250,199,117,.12)",border:"1px solid rgba(250,199,117,.35)"}}>
-            <span className="text-sm">❤️</span><span className="text-xs font-medium">{tr({CA:"Favorits",ES:"Favoritos",EN:"Favourites",FR:"Favoris",DE:"Favoriten",NL:"Favorieten",PT:"Favoritos"},lang)}</span></button>
+            <span className="text-sm" aria-hidden="true">❤️</span><span className="text-xs font-medium">{tr({CA:"Favorits",ES:"Favoritos",EN:"Favourites",FR:"Favoris",DE:"Favoriten",NL:"Favorieten",PT:"Favoritos"},lang)}</span></button>
           <button onClick={()=>nav.push("emergencies")} className="flex items-center gap-2 px-3 py-2.5 rounded-xl" style={{background:"rgba(232,90,80,.12)",border:"1px solid rgba(232,90,80,.35)"}}>
-            <span className="text-sm">🆘</span><span className="text-xs font-medium">{tr({CA:"Emergències",ES:"Emergencias",EN:"Emergencies",FR:"Urgences",DE:"Notfälle",NL:"Noodgevallen",PT:"Urgências"},lang)}</span></button>
+            <span className="text-sm" aria-hidden="true">🆘</span><span className="text-xs font-medium">{tr({CA:"Emergències",ES:"Emergencias",EN:"Emergencies",FR:"Urgences",DE:"Notfälle",NL:"Noodgevallen",PT:"Urgências"},lang)}</span></button>
           <button onClick={()=>nav.push("transport")} className="flex items-center gap-2 px-3 py-2.5 rounded-xl" style={{background:"rgba(201,160,220,.12)",border:"1px solid rgba(201,160,220,.35)"}}>
-            <span className="text-sm">🚗</span><span className="text-xs font-medium">{tr({CA:"Com arribar",ES:"Cómo llegar",EN:"Getting there",FR:"Comment s'y rendre",DE:"Anreise",NL:"Hoe kom je er",PT:"Como chegar"},lang)}</span></button>
+            <span className="text-sm" aria-hidden="true">🚗</span><span className="text-xs font-medium">{tr({CA:"Com arribar",ES:"Cómo llegar",EN:"Getting there",FR:"Comment s'y rendre",DE:"Anreise",NL:"Hoe kom je er",PT:"Como chegar"},lang)}</span></button>
         </div>
 
         <p className="text-center text-xs opacity-35 mt-4">v3.0 · {ui.foot}</p>
@@ -378,7 +378,7 @@ function GastroScreen({lang, nav, ui}) {
     <button onClick={()=>nav.push("restList",{town:null})} className="flex items-center gap-3 w-full text-left px-3 py-2.5 rounded-2xl mb-2" style={{background:"rgba(240,153,123,.12)",border:"1px solid rgba(240,153,123,.35)"}}>
       <Ic d={I.map} size={20} cls="opacity-60"/><div className="flex-1"><div className="text-sm font-medium">{ui.restAll}</div><div className="text-xs opacity-55">{total} {ui.restWord}</div></div><Ic d={I.chev} size={16} cls="opacity-40"/></button>
     {towns.map(t=><button key={t} onClick={()=>nav.push("restList",{town:t})} className="flex items-center gap-3 w-full text-left px-3 py-2.5 rounded-xl mb-1.5" style={{background:V.w5,border:`1px solid ${V.w12}`}}>
-      <span className="text-sm">📍</span><div className="flex-1"><div className="text-sm font-medium">{t}</div><div className="text-xs opacity-55">{D_REST[t].length} {ui.restWord}</div></div><Ic d={I.chev} size={16} cls="opacity-40"/></button>)}
+      <span className="text-sm" aria-hidden="true">📍</span><div className="flex-1"><div className="text-sm font-medium">{t}</div><div className="text-xs opacity-55">{D_REST[t].length} {ui.restWord}</div></div><Ic d={I.chev} size={16} cls="opacity-40"/></button>)}
     {/* Sub-sections */}
     <div className="mt-4 flex flex-col gap-1.5">
       {[{k:"sProd",d:ui.sProdD,go:()=>nav.push("products")},{k:"sPesca",d:ui.sPescaD,go:()=>nav.push("fishing")},{k:"sHist",d:ui.sHistD,go:()=>nav.push("heritage")},{k:"sMerc",d:ui.sMercD,go:()=>nav.push("markets")},{k:"sRutas",d:ui.sRutasD,go:()=>nav.push("rutesExp")}].map((s,i)=>
@@ -409,7 +409,7 @@ function RestListScreen({lang, nav, ui, town, favs, toggleFav}) {
     <Header title={ui.sRest} onBack={()=>nav.pop()}/>
     <h2 className="text-lg font-semibold mb-0.5" style={{fontFamily:"Georgia,serif",color:V.title}}>{town||ui.restAll}</h2>
     <p className="text-xs opacity-55 mb-3">{filtered.length} {ui.restWord}</p>
-    <SearchBar value={search} onChange={setSearch} placeholder={ui.sRest+"..."}/>
+    <SearchBar lang={lang} value={search} onChange={setSearch} placeholder={ui.sRest+"..."}/>
     <Chips opts={cTypes} active={cf} onTap={setCf}/>
     <div className="flex gap-1.5 mb-2">
       <button onClick={()=>setOpenOnly(o=>!o)} className="text-xs px-2.5 py-1 rounded-lg font-medium" style={{background:openOnly?"rgba(93,202,165,.2)":V.w3,border:`1px solid ${openOnly?"rgba(93,202,165,.4)":V.w10}`,color:openOnly?"#5dcaa5":"inherit",opacity:openOnly?1:.5}}>🟢 {tr({CA:"Obert ara",ES:"Abierto ahora",EN:"Open now",FR:"Ouvert maintenant",DE:"Jetzt offen",NL:"Nu open",PT:"Aberto agora"},lang)}</button>
@@ -469,7 +469,7 @@ function BeachesScreen({lang, nav, ui, favs, toggleFav, geo}) {
     <Header title="Delta de l'Ebre" onBack={()=>nav.pop()}/>
     <h2 className="text-lg font-semibold mb-0.5" style={{fontFamily:"Georgia,serif",color:V.title}}>{ui.beachTitle}</h2>
     <p className="text-xs opacity-55 mb-3">{ui.beachIntro}</p>
-    <SearchBar value={s} onChange={setS} placeholder={ui.beachTitle+"..."}/>
+    <SearchBar lang={lang} value={s} onChange={setS} placeholder={ui.beachTitle+"..."}/>
     <div className="flex gap-1.5 mb-2">{[{v:"default",l:"📍"},{v:"near",l:"📡"},{v:"name",l:"A-Z"}].map(o=>
       <button key={o.v} onClick={()=>setSort(o.v)} className="text-xs px-2 py-1 rounded-lg" style={{background:sort===o.v?"rgba(93,202,165,.16)":V.w3,border:`1px solid ${sort===o.v?"rgba(93,202,165,.3)":V.w10}`,color:sort===o.v?"#5dcaa5":"inherit",opacity:sort===o.v?1:.5}}>{o.l}</button>)}</div>
     {filtered.map((b,i)=>{const fk=`beach_${i}`;return(
@@ -478,7 +478,7 @@ function BeachesScreen({lang, nav, ui, favs, toggleFav, geo}) {
         <div className="flex items-center gap-3 px-3 py-3 pr-14">
           <Thumb src={b.photo} emoji={b.icon==="wild"?"🏝️":b.icon==="kite"?"🪁":b.icon==="service"?"🏖️":"🌊"} alt={tr(b.name,lang)}/>
           <div className="min-w-0 flex-1"><div className="font-medium text-sm">{tr(b.name,lang)}</div><div className="text-xs opacity-55 truncate">{tr(b.tagline,lang)}</div></div>
-          {b.dogs&&<span title="Dogs">🐕</span>}
+          {b.dogs&&<span title="Dogs" aria-hidden="true">🐕</span>}
           {geo&&b.lat&&<span className="text-xs opacity-45 shrink-0">{distKm(geo,b)?.toFixed(1)}km</span>}
         </div>
       </button>
@@ -519,7 +519,7 @@ function AllotScreen({lang, nav, ui, favs, toggleFav, geo}) {
     <Header title="Delta de l'Ebre" onBack={()=>nav.pop()}/>
     <h2 className="text-lg font-semibold mb-0.5" style={{fontFamily:"Georgia,serif",color:V.title}}>{ui.allotTitle}</h2>
     <p className="text-xs opacity-55 mb-3">{ui.allotIntro}</p>
-    <SearchBar value={s} onChange={setS} placeholder={ui.allotTitle+"..."}/>
+    <SearchBar lang={lang} value={s} onChange={setS} placeholder={ui.allotTitle+"..."}/>
     <Chips opts={tOpts} active={tf} onTap={setTf}/>
     <Chips opts={zOpts} active={zf} onTap={setZf}/>
     <div className="flex gap-1.5 mb-2">{[{v:"default",l:"📍"},{v:"rating",l:"⭐"},{v:"near",l:"📡"},{v:"name",l:"A-Z"}].map(o=>
@@ -569,7 +569,7 @@ function ContentScreen({data, lang, nav, title, intro, emoji, detailKey, gradien
         {intro&&<p className="text-xs opacity-55">{intro}</p>}</div></div>
     {extraLinks&&<div className="flex gap-2 mb-3">{extraLinks.map((l,i)=>
       <button key={i} onClick={l.go} className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl text-xs font-medium" style={{background:"rgba(93,202,165,.12)",border:"1px solid rgba(93,202,165,.3)",color:"#5dcaa5"}}>
-        <span>{l.icon}</span>{l.label}</button>)}</div>}
+        <span aria-hidden="true">{l.icon}</span>{l.label}</button>)}</div>}
     {data.map((item,i)=>
       <ItemCard key={i} item={item} lang={lang} emoji={item.icon} gradient={gradient}
         onClick={()=>nav.push(detailKey||"contentDetail",{item,parentTitle:title})}/>)}
@@ -580,7 +580,7 @@ function ContentDetailScreen({item, lang, nav, parentTitle}) {
   return (<div className="max-w-md mx-auto w-full px-5 py-5">
     <Header title={parentTitle} onBack={()=>nav.pop()}/>
     {isRealPhoto(item.photo) && <PhotoHero src={item.photo} emoji={item.icon||"📌"} bg={V.hero2} alt={tr(item.name,lang)}/>}
-    <div className="flex items-center gap-3 mb-3"><span className="text-3xl">{item.icon||"📌"}</span>
+    <div className="flex items-center gap-3 mb-3"><span className="text-3xl" aria-hidden="true">{item.icon||"📌"}</span>
       <div><h2 className="text-lg font-semibold" style={{fontFamily:"Georgia,serif",color:V.title}}>{tr(item.name,lang)}</h2>
         {item.tagline&&<p className="text-xs opacity-50 italic">{tr(item.tagline,lang)}</p>}</div></div>
     {item.lead&&<p className="text-sm leading-relaxed mb-4 opacity-75">{tr(item.lead,lang)}</p>}
@@ -588,7 +588,7 @@ function ContentDetailScreen({item, lang, nav, parentTitle}) {
     {item.desc&&<p className="text-sm leading-relaxed mb-4 opacity-75">{tr(item.desc,lang)}</p>}
     {item.facts&&<div className="flex flex-col gap-2 mb-4">{item.facts.map((f,i)=><div key={i} className="text-xs"><span className="font-medium">{tr(f.k,lang)}: </span><span className="opacity-50">{tr(f.v,lang)}</span></div>)}</div>}
     {item.sections&&item.sections.filter(s=>s&&(s.title||s.body)).map((s,i)=><div key={i} className="mb-3">{s.title&&<h3 className="text-xs font-semibold opacity-60 mb-1">{tr(s.title,lang)}</h3>}{s.body&&<p className="text-xs leading-relaxed opacity-50">{tr(s.body,lang)}</p>}</div>)}
-    {item.tip&&<div className="rounded-xl p-3 mb-3" style={{background:"rgba(240,153,123,.1)",border:"1px solid rgba(240,153,123,.2)"}}><div className="text-xs font-semibold mb-0.5" style={{color:"#f0a98e"}}>💡</div><p className="text-xs opacity-65">{tr(item.tip,lang)}</p></div>}
+    {item.tip&&<div className="rounded-xl p-3 mb-3" style={{background:"rgba(240,153,123,.1)",border:"1px solid rgba(240,153,123,.2)"}}><div className="text-xs font-semibold mb-0.5" style={{color:"#f0a98e"}} aria-hidden="true">💡</div><p className="text-xs opacity-65">{tr(item.tip,lang)}</p></div>}
     {item.pop&&<div className="text-xs opacity-45 mb-2">👥 {item.pop}</div>}
     {(item.dist||item.time)&&<div className="flex gap-3 text-xs opacity-55 mb-2">{item.dist&&<span>📏 {item.dist}</span>}{item.time&&<span>⏱️ {item.time}</span>}{item.diff&&<span>🏔️ {tr(item.diff,lang)}</span>}{item.elev&&<span>📈 {item.elev}</span>}</div>}
     {item.start&&<div className="text-xs opacity-55 mb-2">📍 {tr(item.start,lang)}</div>}
@@ -603,7 +603,7 @@ function ContentDetailScreen({item, lang, nav, parentTitle}) {
       if(!nearby.length) return null;
       return <div className="mt-5"><h3 className="text-xs font-bold uppercase tracking-wider opacity-40 mb-2">{tr({CA:"A prop",ES:"Cerca",EN:"Nearby",FR:"À proximité",DE:"In der Nähe",NL:"In de buurt",PT:"Perto"},lang)}</h3>
         {nearby.map((n,i)=><button key={i} onClick={()=>nav.push("contentDetail",{item:n,parentTitle:parentTitle})} className="flex items-center gap-2 w-full text-left px-2.5 py-2 rounded-lg mb-1" style={{background:V.w3}}>
-          <span className="text-sm">{n.icon||"📍"}</span><div className="flex-1 min-w-0 text-xs font-medium truncate">{tr(n.name,lang)}</div><span className="text-xs opacity-40 shrink-0">{n.d.toFixed(1)}km</span>
+          <span className="text-sm" aria-hidden="true">{n.icon||"📍"}</span><div className="flex-1 min-w-0 text-xs font-medium truncate">{tr(n.name,lang)}</div><span className="text-xs opacity-40 shrink-0">{n.d.toFixed(1)}km</span>
         </button>)}</div>;
     })()}
   </div>);
@@ -683,7 +683,7 @@ function ConsentBanner({lang, onAccept}) {
 /* ═══════════ TOAST ═══════════ */
 function Toast({msg}) {
   if(!msg) return null;
-  return <div style={{position:"fixed",bottom:80,left:"50%",transform:"translateX(-50%)",background:"rgba(0,0,0,.85)",color:"#fff",padding:"8px 18px",borderRadius:12,fontSize:12,fontWeight:500,zIndex:99,animation:"fadeIn .2s ease",backdropFilter:"blur(8px)",pointerEvents:"none"}}>{msg}</div>;
+  return <div role="status" aria-live="polite" style={{position:"fixed",bottom:80,left:"50%",transform:"translateX(-50%)",background:"rgba(0,0,0,.85)",color:"#fff",padding:"8px 18px",borderRadius:12,fontSize:12,fontWeight:500,zIndex:99,animation:"fadeIn .2s ease",backdropFilter:"blur(8px)",pointerEvents:"none"}}>{msg}</div>;
 }
 
 /* ═══════════ WEATHER WIDGET ═══════════ */
@@ -714,19 +714,19 @@ function WeatherWidget({lang, nav}) {
     :null;
   return (<>
     <div className="rounded-xl p-3 mb-2 flex items-center gap-3" style={{background:"rgba(133,183,235,.1)",border:"1px solid rgba(133,183,235,.2)"}}>
-      <span className="text-3xl">{icon}</span>
+      <span className="text-3xl" aria-hidden="true">{icon}</span>
       <div className="flex-1">
         <div className="text-lg font-bold">{Math.round(cur.temperature_2m)}°C</div>
         <div className="text-xs opacity-50">{tr({CA:"Vent",ES:"Viento",EN:"Wind",FR:"Vent",DE:"Wind",NL:"Wind",PT:"Vento"},lang)} {Math.round(cur.windspeed_10m)} km/h · {tr({CA:"Humitat",ES:"Humedad",EN:"Humidity",FR:"Humidité",DE:"Feuchtigkeit",NL:"Vochtigheid",PT:"Humidade"},lang)} {cur.relative_humidity_2m}%</div>
       </div>
       {w.daily && <div className="flex gap-2">{w.daily.time.slice(0,3).map((d,i)=>
         <div key={i} className="text-center text-xs"><div className="opacity-55">{d.slice(5)}</div>
-          <div>{WMO_ICONS[w.daily.weathercode[i]]||"🌡️"}</div>
+          <div aria-hidden="true">{WMO_ICONS[w.daily.weathercode[i]]||"🌡️"}</div>
           <div className="font-medium">{Math.round(w.daily.temperature_2m_max[i])}°</div>
           <div className="opacity-55">{Math.round(w.daily.temperature_2m_min[i])}°</div></div>)}</div>}
     </div>
     {suggestion&&<button onClick={suggestion.go} className="flex items-center gap-2 rounded-xl px-3 py-2 mb-2 w-full text-left" style={{background:"rgba(133,183,235,.08)",border:"1px solid rgba(133,183,235,.15)"}}>
-      <span className="text-lg">{suggestion.icon}</span><p className="text-xs opacity-60 flex-1">{tr(suggestion.text,lang)}</p><Ic d={I.chev} size={14} cls="opacity-35"/></button>}
+      <span className="text-lg" aria-hidden="true">{suggestion.icon}</span><p className="text-xs opacity-60 flex-1">{tr(suggestion.text,lang)}</p><Ic d={I.chev} size={14} cls="opacity-35"/></button>}
   </>);
 }
 
@@ -743,7 +743,7 @@ function BirdingScreen({lang, nav, ui}) {
     
     {tab==="species" && D_BIRDS.map((b,i)=>
       <div key={b.id||i} className="flex gap-3 px-3 py-2.5 rounded-xl mb-1.5" style={{background:V.w5,border:`1px solid ${V.w12}`}}>
-        <span className="text-2xl">{b.icon||"🐦"}</span>
+        <span className="text-2xl" aria-hidden="true">{b.icon||"🐦"}</span>
         <div className="flex-1 min-w-0">
           <div className="font-medium text-sm">{tr(b.name,lang)}</div>
           <div className="text-xs opacity-45 italic">{b.sci}</div>
@@ -754,7 +754,7 @@ function BirdingScreen({lang, nav, ui}) {
     
     {tab==="hides" && D_HIDES.map((h,i)=>
       <div key={h.id||i} className="flex gap-3 px-3 py-2.5 rounded-xl mb-1.5" style={{background:V.w5,border:`1px solid ${V.w12}`}}>
-        <span className="text-xl">🔭</span>
+        <span className="text-xl" aria-hidden="true">🔭</span>
         <div className="flex-1 min-w-0">
           <div className="font-medium text-sm">{h.name}</div>
           <p className="text-xs opacity-50 mt-0.5">{tr(h.desc,lang)}</p>
@@ -834,13 +834,13 @@ function RutesExpScreen({lang, nav, ui}) {
 
 /* ═══════════ PRODUCTS ═══════════ */
 function ProductsScreen({lang, nav, ui}) {
-  const icons={rice:"🌾",oil:"🫒",shell:"🦪",salt:"🧂",honey:"🍯",galera:"🦐",shrimp:"🦐",anguila:"🐍",citrus:"🍊"};
+  const icons={rice:"🌾",oil:"🫒",shell:"🦪",salt:"🧂",honey:"🍯",galera:"🦐",shrimp:"🦐",anguila:"🐍",citrus:"🍊",carxofa:"🥬"};
   return (<div className="max-w-md mx-auto w-full px-5 py-5">
     <Header title="Delta de l'Ebre" onBack={()=>nav.pop()}/>
     <h2 className="text-lg font-semibold mb-0.5" style={{fontFamily:"Georgia,serif",color:V.title}}>{ui.sProd}</h2>
     <p className="text-xs opacity-55 mb-4">{ui.sProdD}</p>
     {D_PROD.map((p,i)=><div key={i} className="flex gap-3 px-3 py-3 rounded-2xl mb-2" style={{background:V.w6,border:`1px solid ${V.w12}`}}>
-      <span className="text-2xl shrink-0">{icons[p.icon]||"🌿"}</span>
+      <span className="text-2xl shrink-0" aria-hidden="true">{icons[p.icon]||"🌿"}</span>
       <div className="min-w-0"><div className="font-medium text-sm">{tr(p.name,lang)}</div><div className="text-xs opacity-55 italic">{tr(p.tagline,lang)}</div><p className="text-xs opacity-55 mt-1 leading-relaxed">{tr(p.lead,lang)}</p></div></div>)}
   </div>);
 }
@@ -1040,6 +1040,8 @@ function MapScreen({lang, nav, ui, geo}) {
   // Escolta els missatges de l'iframe (marcador tocat → obre la fitxa; mapa preparat → aplica filtre).
   useEffect(() => {
     const onMsg = (e) => {
+      // Seguretat: només acceptem missatges del nostre propi iframe del mapa.
+      if (iframeRef.current && e.source !== iframeRef.current.contentWindow) return;
       const d = e.data || {};
       if (d.type === "delta-map-ready") {
         readyRef.current = true;
@@ -1263,7 +1265,7 @@ Return JSON exactly as: {"days":[[{"time":"09:30","name":"...","note":"...","ico
     {plan.map((day,d)=><div key={d} className="mb-5">
       <h3 className="text-xs font-bold uppercase tracking-wider mb-2 opacity-55">{tr({CA:`Dia ${d+1}`,ES:`Día ${d+1}`,EN:`Day ${d+1}`,FR:`Jour ${d+1}`,DE:`Tag ${d+1}`,NL:`Dag ${d+1}`,PT:`Dia ${d+1}`},lang)}</h3>
       {day.map((item,i)=><div key={i} className="flex gap-3 px-3 py-2.5 rounded-xl mb-1.5" style={{background:V.w5,border:`1px solid ${V.w12}`}}>
-        <div className="shrink-0 text-center" style={{width:36}}><div className="text-lg">{item.icon}</div><div className="text-xs font-mono opacity-45 mt-0.5">{item.time}</div></div>
+        <div className="shrink-0 text-center" style={{width:36}}><div className="text-lg" aria-hidden="true">{item.icon}</div><div className="text-xs font-mono opacity-45 mt-0.5">{item.time}</div></div>
         <div className="min-w-0"><div className="text-sm font-medium">{item.name}</div><div className="text-xs opacity-55">{item.note}</div></div>
       </div>)}
     </div>)}
@@ -1332,7 +1334,7 @@ function SearchScreen({lang, nav, ui, favs, toggleFav}) {
   
   return (<div className="max-w-md mx-auto w-full px-5 py-5">
     <Header title="Delta de l'Ebre" onBack={()=>nav.pop()}/>
-    <SearchBar value={q} onChange={setQ} placeholder={tr({CA:"Cercar a tot el delta...",ES:"Buscar en todo el delta...",EN:"Search the delta...",FR:"Rechercher dans le delta...",DE:"Im Delta suchen...",NL:"Zoeken in de delta...",PT:"Pesquisar no delta..."},lang)}/>
+    <SearchBar lang={lang} value={q} onChange={setQ} placeholder={tr({CA:"Cercar a tot el delta...",ES:"Buscar en todo el delta...",EN:"Search the delta...",FR:"Rechercher dans le delta...",DE:"Im Delta suchen...",NL:"Zoeken in de delta...",PT:"Pesquisar no delta..."},lang)}/>
     {q.length>=2&&total===0&&<Empty text={tr({CA:"Sense resultats",ES:"Sin resultados",EN:"No results",FR:"Aucun résultat",DE:"Keine Ergebnisse",NL:"Geen resultaten",PT:"Sem resultados"},lang)}/>}
     <Section icon="🍽️" label={ui.sRest} items={res.r} onClick={r=>nav.push("restDetail",{restaurant:r})}/>
     <Section icon="🏖️" label={ui.beachTitle} items={res.b} onClick={(b,i)=>nav.push("beachDetail",{beach:b,idx:i})}/>
@@ -1345,7 +1347,7 @@ function SearchScreen({lang, nav, ui, favs, toggleFav}) {
     <Section icon="🎣" label={ui.pescaTitle} items={res.pesca} onClick={p=>nav.push("contentDetail",{item:p,parentTitle:ui.pescaTitle})}/>
     <Section icon="🛒" label={ui.sMerc||"Mercats"} items={res.mercats} onClick={m=>nav.push("contentDetail",{item:m,parentTitle:ui.sMerc})}/>
     <Section icon="🍷" label={ui.sRutas||"Rutes"} items={res.rutes} onClick={r=>nav.push("contentDetail",{item:r,parentTitle:ui.sRutas})}/>
-    {q.length<2&&<div className="text-center opacity-40 py-8"><div className="text-3xl mb-2">🔍</div><p className="text-xs">{tr({CA:"Escriu 2+ lletres",ES:"Escribe 2+ letras",EN:"Type 2+ letters",FR:"Tapez 2+ lettres",DE:"2+ Buchstaben eingeben",NL:"Typ 2+ letters",PT:"Escreva 2+ letras"},lang)}</p></div>}
+    {q.length<2&&<div className="text-center opacity-40 py-8"><div className="text-3xl mb-2" aria-hidden="true">🔍</div><p className="text-xs">{tr({CA:"Escriu 2+ lletres",ES:"Escribe 2+ letras",EN:"Type 2+ letters",FR:"Tapez 2+ lettres",DE:"2+ Buchstaben eingeben",NL:"Typ 2+ letters",PT:"Escreva 2+ letras"},lang)}</p></div>}
   </div>);
 }
 
@@ -1397,27 +1399,9 @@ function AccessibilityScreen({lang, nav}) {
     <Header title="Delta de l'Ebre" onBack={()=>nav.pop()}/>
     <div className="flex items-center gap-3 mb-4"><span className="text-2xl" aria-hidden="true">♿</span>
       <h2 className="text-lg font-semibold" style={{fontFamily:"Georgia,serif",color:V.title}}>{t({CA:"Accessibilitat",ES:"Accesibilidad",EN:"Accessibility",FR:"Accessibilité",DE:"Barrierefreiheit",NL:"Toegankelijkheid",PT:"Acessibilidade"})}</h2></div>
-
-    <div className="rounded-xl p-4 mb-3" style={{background:V.w5,border:`1px solid ${V.w12}`}}>
-      <p className="text-xs opacity-60 leading-relaxed mb-3">{t({CA:"Aquesta aplicació vol oferir un accés sense barreres a tothom, d'acord amb el Reial decret 1112/2018 sobre accessibilitat dels llocs web i aplicacions mòbils del sector públic.",ES:"Esta aplicación quiere ofrecer un acceso sin barreras a todas las personas, de acuerdo con el Real Decreto 1112/2018 sobre accesibilidad de los sitios web y aplicaciones móviles del sector público.",EN:"This application aims to offer barrier-free access to everyone, in line with Spanish Royal Decree 1112/2018 on the accessibility of public-sector websites and mobile apps.",FR:"Cette application vise un accès sans barrières pour tous, conformément au décret royal espagnol 1112/2018 sur l'accessibilité des sites et applications du secteur public.",DE:"Diese App möchte allen einen barrierefreien Zugang bieten, gemäß dem spanischen Königlichen Dekret 1112/2018 zur Barrierefreiheit von Websites und Apps des öffentlichen Sektors.",NL:"Deze app wil iedereen toegang zonder drempels bieden, conform het Spaanse Koninklijk Besluit 1112/2018 over toegankelijkheid van overheidswebsites en -apps.",PT:"Esta aplicação pretende oferecer acesso sem barreiras a todos, de acordo com o Real Decreto espanhol 1112/2018 sobre acessibilidade de sites e aplicações do setor público."})}</p>
-      <p className="text-xs opacity-55 leading-relaxed">{t({CA:"Estat actual: parcialment conforme. Treballem per assolir la plena conformitat amb el nivell AA de les WCAG 2.1 (norma UNE-EN 301549).",ES:"Estado actual: parcialmente conforme. Trabajamos para alcanzar la plena conformidad con el nivel AA de las WCAG 2.1 (norma UNE-EN 301549).",EN:"Current status: partially conformant. We are working towards full conformance with WCAG 2.1 level AA (standard EN 301549).",FR:"État actuel : partiellement conforme. Nous travaillons vers la pleine conformité au niveau AA des WCAG 2.1 (norme EN 301549).",DE:"Aktueller Stand: teilweise konform. Wir arbeiten auf die vollständige Konformität mit WCAG 2.1 Stufe AA (Norm EN 301549) hin.",NL:"Huidige status: gedeeltelijk conform. We werken aan volledige conformiteit met WCAG 2.1 niveau AA (norm EN 301549).",PT:"Estado atual: parcialmente conforme. Trabalhamos para alcançar a plena conformidade com o nível AA das WCAG 2.1 (norma EN 301549)."})}</p>
+    <div className="rounded-xl p-4" style={{background:V.w5,border:`1px solid ${V.w12}`}}>
+      <p className="text-xs opacity-60 leading-relaxed">{t({CA:"La declaració d'accessibilitat d'aquesta aplicació serà elaborada i publicada per l'organisme responsable.",ES:"La declaración de accesibilidad de esta aplicación será elaborada y publicada por el organismo responsable.",EN:"The accessibility statement for this application will be prepared and published by the responsible body.",FR:"La déclaration d'accessibilité de cette application sera élaborée et publiée par l'organisme responsable.",DE:"Die Erklärung zur Barrierefreiheit dieser Anwendung wird von der zuständigen Stelle erstellt und veröffentlicht.",NL:"De toegankelijkheidsverklaring van deze applicatie wordt opgesteld en gepubliceerd door de verantwoordelijke instantie.",PT:"A declaração de acessibilidade desta aplicação será elaborada e publicada pelo organismo responsável."})}</p>
     </div>
-
-    <div className="rounded-xl p-4 mb-3" style={{background:V.w4,border:`1px solid ${V.w10}`}}>
-      <h3 className="text-xs font-bold opacity-55 uppercase tracking-wider mb-2">{t({CA:"Mesures adoptades",ES:"Medidas adoptadas",EN:"Measures taken",FR:"Mesures adoptées",DE:"Getroffene Maßnahmen",NL:"Genomen maatregelen",PT:"Medidas adotadas"})}</h3>
-      <p className="text-xs opacity-50 leading-relaxed">{t({CA:"Focus visible per a la navegació amb teclat, opció de reduir el moviment, idioma de la pàgina ajustat a l'idioma triat, contrast millorat del text i una alternativa en forma de llista de punts al mapa interactiu.",ES:"Foco visible para la navegación con teclado, opción de reducir el movimiento, idioma de la página ajustado al idioma elegido, contraste mejorado del texto y una alternativa en forma de lista de puntos al mapa interactivo.",EN:"Visible focus for keyboard navigation, reduced-motion support, page language matched to the chosen language, improved text contrast, and a points-list alternative to the interactive map.",FR:"Focus visible au clavier, prise en charge de la réduction des animations, langue de la page adaptée à la langue choisie, contraste du texte amélioré et une liste de points en alternative à la carte interactive.",DE:"Sichtbarer Fokus für die Tastaturnavigation, Unterstützung für reduzierte Bewegung, an die gewählte Sprache angepasste Seitensprache, verbesserter Textkontrast und eine Punktliste als Alternative zur interaktiven Karte.",NL:"Zichtbare focus voor toetsenbordnavigatie, ondersteuning voor minder beweging, paginataal afgestemd op de gekozen taal, verbeterd tekstcontrast en een puntenlijst als alternatief voor de interactieve kaart.",PT:"Foco visível para navegação por teclado, suporte a movimento reduzido, idioma da página ajustado ao idioma escolhido, melhor contraste do texto e uma lista de pontos como alternativa ao mapa interativo."})}</p>
-    </div>
-
-    <div className="rounded-xl p-4 mb-3" style={{background:V.w4,border:`1px solid ${V.w10}`}}>
-      <h3 className="text-xs font-bold opacity-55 uppercase tracking-wider mb-2">{t({CA:"Contacte d'accessibilitat",ES:"Contacto de accesibilidad",EN:"Accessibility contact",FR:"Contact accessibilité",DE:"Kontakt Barrierefreiheit",NL:"Contact toegankelijkheid",PT:"Contacto de acessibilidade"})}</h3>
-      <p className="text-xs opacity-50 leading-relaxed mb-2">{t({CA:"Comunica'ns qualsevol dificultat d'accés o suggeriment de millora (art. 10.2.a del RD 1112/2018).",ES:"Comunícanos cualquier dificultad de acceso o sugerencia de mejora (art. 10.2.a del RD 1112/2018).",EN:"Tell us about any access difficulty or suggestion for improvement (art. 10.2.a of RD 1112/2018).",FR:"Signalez-nous toute difficulté d'accès ou suggestion d'amélioration (art. 10.2.a du RD 1112/2018).",DE:"Teilen Sie uns Zugangsschwierigkeiten oder Verbesserungsvorschläge mit (Art. 10.2.a des RD 1112/2018).",NL:"Meld ons toegangsproblemen of verbetersuggesties (art. 10.2.a van RD 1112/2018).",PT:"Comunique-nos qualquer dificuldade de acesso ou sugestão de melhoria (art. 10.2.a do RD 1112/2018)."})}</p>
-      <a href={`mailto:${A11Y_CONTACT_EMAIL}`} className="inline-flex items-center gap-1.5 text-xs font-medium no-underline" style={{color:"#5dcaa5"}}>✉️ {A11Y_CONTACT_EMAIL}</a>
-      {A11Y_COMPLAINT_URL && <div className="mt-3"><a href={A11Y_COMPLAINT_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs font-medium no-underline" style={{color:"#85b7eb"}}>⚖️ {t({CA:"Procediment de reclamació (art. 13)",ES:"Procedimiento de reclamación (art. 13)",EN:"Complaints procedure (art. 13)",FR:"Procédure de réclamation (art. 13)",DE:"Beschwerdeverfahren (Art. 13)",NL:"Klachtenprocedure (art. 13)",PT:"Procedimento de reclamação (art. 13)"})}</a></div>}
-    </div>
-
-    {A11Y_DECLARATION_URL
-      ? <a href={A11Y_DECLARATION_URL} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-medium no-underline" style={{background:"rgba(93,202,165,.12)",border:"1px solid rgba(93,202,165,.3)",color:"#5dcaa5"}}>📄 {t({CA:"Llegeix la declaració completa",ES:"Leer la declaración completa",EN:"Read the full declaration",FR:"Lire la déclaration complète",DE:"Vollständige Erklärung lesen",NL:"Lees de volledige verklaring",PT:"Ler a declaração completa"})}</a>
-      : <p className="text-xs opacity-40 text-center leading-relaxed">{t({CA:"La declaració d'accessibilitat completa es publicarà properament.",ES:"La declaración de accesibilidad completa se publicará próximamente.",EN:"The full accessibility declaration will be published soon.",FR:"La déclaration d'accessibilité complète sera publiée prochainement.",DE:"Die vollständige Erklärung zur Barrierefreiheit wird in Kürze veröffentlicht.",NL:"De volledige toegankelijkheidsverklaring wordt binnenkort gepubliceerd.",PT:"A declaração de acessibilidade completa será publicada em breve."})}</p>}
   </div>);
 }
 
@@ -1468,6 +1452,42 @@ function AboutScreen({lang, nav}) {
 // ─── Emmagatzematge persistent ───
 // Funciona a la web publicada (localStorage) i també dins de Claude (window.storage).
 
+// ─── Fotografies per secció (gestionades des del CMS) ───
+// Cada secció té un fitxer data/photos-<secció>.json amb {ref,label,photo}.
+// L'administració hi puja les seves imatges; aquí es fusionen sobre les dades
+// del codi (només si la foto és una imatge real). Si el fitxer no existeix o
+// falla, es conserva la dada original → mai trenca res (fallback segur).
+const PHOTO_MANIFESTS = [
+  ["photos-platges.json",      D_BEACH],
+  ["photos-allotjaments.json", D_ALLOT],
+  ["photos-pobles.json",       D_PUEB],
+  ["photos-natura.json",       D_NAT],
+  ["photos-activitats.json",   D_ACT],
+  ["photos-patrimoni.json",    D_HERITAGE],
+  ["photos-familia.json",      D_FAM],
+  ["photos-pesca.json",        D_PESCA],
+  ["photos-bici.json",         D_BICI],
+  ["photos-rutes.json",        D_RUTES_EXP],
+  ["photos-mercats.json",      D_MERCATS],
+];
+
+async function mergeSectionPhotos() {
+  for (const [file, arr] of PHOTO_MANIFESTS) {
+    try {
+      const r = await fetch(CMS_DATA_BASE + "/" + file, { cache: "no-store" });
+      if (!r.ok) continue;
+      const dd = await r.json();
+      const list = Array.isArray(dd) ? dd : (dd.items || []);
+      const byRef = {};
+      for (const e of list) { if (e && e.ref != null) byRef[String(e.ref)] = e.photo; }
+      arr.forEach((item, i) => {
+        const key = (item && item.id != null) ? String(item.id) : String(i);
+        if (isRealPhoto(byRef[key])) item.photo = byRef[key];
+      });
+    } catch (e) { /* conserva la dada del codi */ }
+  }
+}
+
 async function loadCMSData() {
   const get = async (f) => {
     const r = await fetch(CMS_DATA_BASE + "/" + f, { cache: "no-store" });
@@ -1485,6 +1505,7 @@ async function loadCMSData() {
   } catch (e) {}
   // Només restaurants i events es gestionen via CMS; la resta de seccions usen les dades del codi.
   try { setEvents(await get("events.json")); } catch (e) {}
+  await mergeSectionPhotos();
 }
 
 function AppInner() {
@@ -1498,6 +1519,13 @@ function AppInner() {
   const [consent, setConsent] = useState(null);
   const [recent, setRecent] = useState([]);
   const [dataTick, setDataTick] = useState(0);
+
+  // Accessibilitat: en navegar entre pantalles, mou el focus al contingut principal
+  // perquè els lectors de pantalla i la navegació amb teclat no quedin perduts (WCAG 2.4.3).
+  useEffect(() => {
+    const m = document.getElementById("main");
+    if (m && typeof m.focus === "function") m.focus();
+  }, [navStack]);
 
   // Carrega les dades del CMS si estan disponibles (només a la web publicada)
   useEffect(() => {
@@ -1638,12 +1666,13 @@ function AppInner() {
 
   return (
     <div style={bg}>
+      <a href="#main" className="skip-link">{tr({CA:"Salta al contingut principal",ES:"Saltar al contenido principal",EN:"Skip to main content",FR:"Aller au contenu principal",DE:"Zum Hauptinhalt springen",NL:"Naar hoofdinhoud",PT:"Saltar para o conteúdo principal"},lang)}</a>
       <style>{"@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(.97)}100%{transform:scale(1)}}.press:active{transform:scale(.97);transition:transform .1s}.card-hover{transition:transform .15s,box-shadow .15s}.card-hover:active{transform:scale(.98)}a:focus-visible,button:focus-visible,[tabindex]:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #5dcaa5;outline-offset:2px;border-radius:8px}@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}"}</style>
       {consent===null && lang && <ConsentBanner lang={lang} onAccept={(full)=>{setConsent(full);try{store.set("delta-consent",full?"full":"essential")}catch(e){}}}/>}
       <Toast msg={toast}/>
       {showLM && <LangModal current={lang} onSelect={setLangPersist} onClose={()=>setShowLM(false)}/>}
       
-      <main id="main" key={dataTick+"-"+navStack.length+"-"+c.screen} style={{animation:"fadeIn .2s ease"}}>{c.screen==="home" && <HomeScreen {...cp} onLangClick={()=>setShowLM(true)} onThemeToggle={()=>setDarkPersist(d=>!d)} dark={dark}/>}
+      <main id="main" tabIndex={-1} key={dataTick+"-"+navStack.length+"-"+c.screen} style={{animation:"fadeIn .2s ease",outline:"none"}}>{c.screen==="home" && <HomeScreen {...cp} onLangClick={()=>setShowLM(true)} onThemeToggle={()=>setDarkPersist(d=>!d)} dark={dark}/>}
       {c.screen==="gastro" && <GastroScreen {...cp}/>}
       {c.screen==="restList" && <RestListScreen {...cp} town={c.town}/>}
       {c.screen==="restDetail" && <RestDetailScreen {...cp} restaurant={c.restaurant}/>}

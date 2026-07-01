@@ -1,0 +1,29 @@
+{
+  "items": [
+    {
+      "ref": "0",
+      "label": "Ruta de les muscleres en barca",
+      "photo": ""
+    },
+    {
+      "ref": "1",
+      "label": "Enoturisme: Terra Alta, Montsant i Priorat",
+      "photo": ""
+    },
+    {
+      "ref": "2",
+      "label": "Ruta de l'arròs: del camp al plat",
+      "photo": ""
+    },
+    {
+      "ref": "3",
+      "label": "Tast Clandà",
+      "photo": ""
+    },
+    {
+      "ref": "4",
+      "label": "Escola de Cuina Villa Retiro",
+      "photo": ""
+    }
+  ]
+}

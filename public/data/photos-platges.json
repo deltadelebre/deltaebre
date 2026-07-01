@@ -1,0 +1,139 @@
+{
+  "items": [
+    {
+      "ref": "0",
+      "label": "Punta del Fangar",
+      "photo": ""
+    },
+    {
+      "ref": "1",
+      "label": "Platja de la Marquesa",
+      "photo": ""
+    },
+    {
+      "ref": "2",
+      "label": "Platja de Riumar",
+      "photo": ""
+    },
+    {
+      "ref": "3",
+      "label": "El Trabucador",
+      "photo": ""
+    },
+    {
+      "ref": "4",
+      "label": "Platja de l'Eucaliptus",
+      "photo": ""
+    },
+    {
+      "ref": "5",
+      "label": "Platja de les Delícies",
+      "photo": ""
+    },
+    {
+      "ref": "6",
+      "label": "Platja de l'Ampolla (l'Arenal)",
+      "photo": ""
+    },
+    {
+      "ref": "7",
+      "label": "Platja Cap-Roig",
+      "photo": ""
+    },
+    {
+      "ref": "8",
+      "label": "Platja de les Avellanes",
+      "photo": ""
+    },
+    {
+      "ref": "9",
+      "label": "Els Capellans (Cala Montero)",
+      "photo": ""
+    },
+    {
+      "ref": "10",
+      "label": "Platja del Garbí",
+      "photo": ""
+    },
+    {
+      "ref": "11",
+      "label": "Platja del Capri",
+      "photo": ""
+    },
+    {
+      "ref": "12",
+      "label": "Platja de la Senieta",
+      "photo": ""
+    },
+    {
+      "ref": "13",
+      "label": "Platja de les Cases-Marjal",
+      "photo": ""
+    },
+    {
+      "ref": "14",
+      "label": "Platja de la Martinenca (Ciment)",
+      "photo": ""
+    },
+    {
+      "ref": "15",
+      "label": "Platja Maricel",
+      "photo": ""
+    },
+    {
+      "ref": "16",
+      "label": "Platja del Serrallo",
+      "photo": ""
+    },
+    {
+      "ref": "17",
+      "label": "Platja de la Bassa de l'Arena",
+      "photo": ""
+    },
+    {
+      "ref": "18",
+      "label": "Platja del Baconé",
+      "photo": ""
+    },
+    {
+      "ref": "19",
+      "label": "Platja de l'Arquitecte",
+      "photo": ""
+    },
+    {
+      "ref": "20",
+      "label": "Platja dels Pinets",
+      "photo": ""
+    },
+    {
+      "ref": "21",
+      "label": "Cala Maria",
+      "photo": ""
+    },
+    {
+      "ref": "22",
+      "label": "Cala de l'Ascaret",
+      "photo": ""
+    },
+    {
+      "ref": "23",
+      "label": "Platja del Migjorn",
+      "photo": ""
+    },
+    {
+      "ref": "24",
+      "label": "Platja de la Platjola",
+      "photo": ""
+    },
+    {
+      "ref": "25",
+      "label": "Platja de l'Estanyet",
+      "photo": ""
+    },
+    {
+      "ref": "26",
+      "label": "Platja de Sòl de Riu",
+      "photo": ""
+    }
+  ]
+}

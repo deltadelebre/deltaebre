@@ -1,0 +1,39 @@
+{
+  "items": [
+    {
+      "ref": "pe_riu",
+      "label": "Pesca al riu Ebre (silur i carpa)",
+      "photo": ""
+    },
+    {
+      "ref": "pe_mar",
+      "label": "Pesca en barco al mar (spinning i gran caça)",
+      "photo": ""
+    },
+    {
+      "ref": "pe_surf",
+      "label": "Surfcasting des de platja (pesca de costa)",
+      "photo": ""
+    },
+    {
+      "ref": "pe_llacunes",
+      "label": "Pesca a les llacunes (anguila, llobarro, dorada)",
+      "photo": ""
+    },
+    {
+      "ref": "pe_llicencia",
+      "label": "Llicències i normativa: el que has de saber",
+      "photo": ""
+    },
+    {
+      "ref": "pe_empreses",
+      "label": "Empreses de chàrter de pesca",
+      "photo": ""
+    },
+    {
+      "ref": "pe_spots",
+      "label": "Punts de pesca d'interès",
+      "photo": ""
+    }
+  ]
+}

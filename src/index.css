@@ -12,3 +12,19 @@ body { margin: 0; -webkit-tap-highlight-color: transparent; }
   border-radius: 4px;
 }
 :focus:not(:focus-visible) { outline: none; }
+
+/* Enllaç "salta al contingut" per a navegació amb teclat (WCAG 2.4.1) */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: #5dcaa5;
+  color: #04121a;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.skip-link:focus { left: 8px; top: 8px; }

@@ -1,0 +1,49 @@
+{
+  "items": [
+    {
+      "ref": "0",
+      "label": "Amposta",
+      "photo": ""
+    },
+    {
+      "ref": "1",
+      "label": "Camarles",
+      "photo": ""
+    },
+    {
+      "ref": "2",
+      "label": "l'Aldea",
+      "photo": ""
+    },
+    {
+      "ref": "3",
+      "label": "l'Ampolla",
+      "photo": ""
+    },
+    {
+      "ref": "4",
+      "label": "Deltebre",
+      "photo": ""
+    },
+    {
+      "ref": "5",
+      "label": "Sant Jaume d'Enveja",
+      "photo": ""
+    },
+    {
+      "ref": "6",
+      "label": "Sant Carles de la Ràpita",
+      "photo": ""
+    },
+    {
+      "ref": "7",
+      "label": "Alcanar",
+      "photo": ""
+    },
+    {
+      "ref": "8",
+      "label": "Compra directa: cooperatives i botigues",
+      "photo": ""
+    }
+  ]
+}

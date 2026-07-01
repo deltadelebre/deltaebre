@@ -146,3 +146,295 @@ collections:
               - { name: pid, label: "Google Place ID", widget: string, required: false }
               - { name: photo, label: "Foto (URL o marcador)", widget: string, required: false, hint: "URL d'imatge (https://…). Si es deixa el marcador __PH_n__ es mostra l'emoji." }
               - { name: icon, label: "Emoji de reserva", widget: string, required: false }
+
+  # ═══════════════════════════════════════════════════════════════
+  # FOTOGRAFIES PER SECCIÓ  →  data/photos-*.json
+  # L'administració puja aquí les seves imatges (del seu banc propi).
+  # Cada secció es fusiona sobre les dades de l'app en carregar.
+  # ═══════════════════════════════════════════════════════════════
+  - name: fotos_platges
+    label: Fotos · Platges
+    description: Afegeix la fotografia de cada lloc. Si es deixa buit, es mostra l'emoji de sempre.
+    files:
+    - name: fitxer
+      label: Platges
+      file: data/photos-platges.json
+      fields:
+      - name: items
+        label: Platges
+        label_singular: Platja
+        widget: list
+        summary: '{{fields.label}}'
+        fields:
+        - name: ref
+          label: Referència
+          widget: hidden
+        - name: label
+          label: Lloc
+          widget: string
+          hint: Nom del lloc. No cal editar-ho.
+        - name: photo
+          label: Foto
+          widget: image
+          required: false
+          hint: Puja o tria la fotografia d'aquest lloc, del vostre banc d'imatges.
+  - name: fotos_allotjaments
+    label: Fotos · Allotjaments
+    description: Afegeix la fotografia de cada lloc. Si es deixa buit, es mostra l'emoji de sempre.
+    files:
+    - name: fitxer
+      label: Allotjaments
+      file: data/photos-allotjaments.json
+      fields:
+      - name: items
+        label: Allotjaments
+        label_singular: Allotjament
+        widget: list
+        summary: '{{fields.label}}'
+        fields:
+        - name: ref
+          label: Referència
+          widget: hidden
+        - name: label
+          label: Lloc
+          widget: string
+          hint: Nom del lloc. No cal editar-ho.
+        - name: photo
+          label: Foto
+          widget: image
+          required: false
+          hint: Puja o tria la fotografia d'aquest lloc, del vostre banc d'imatges.
+  - name: fotos_pobles
+    label: Fotos · Pobles
+    description: Afegeix la fotografia de cada lloc. Si es deixa buit, es mostra l'emoji de sempre.
+    files:
+    - name: fitxer
+      label: Pobles
+      file: data/photos-pobles.json
+      fields:
+      - name: items
+        label: Pobles
+        label_singular: Poble
+        widget: list
+        summary: '{{fields.label}}'
+        fields:
+        - name: ref
+          label: Referència
+          widget: hidden
+        - name: label
+          label: Lloc
+          widget: string
+          hint: Nom del lloc. No cal editar-ho.
+        - name: photo
+          label: Foto
+          widget: image
+          required: false
+          hint: Puja o tria la fotografia d'aquest lloc, del vostre banc d'imatges.
+  - name: fotos_natura
+    label: Fotos · Natura
+    description: Afegeix la fotografia de cada lloc. Si es deixa buit, es mostra l'emoji de sempre.
+    files:
+    - name: fitxer
+      label: Espais naturals
+      file: data/photos-natura.json
+      fields:
+      - name: items
+        label: Espais naturals
+        label_singular: Espai natural
+        widget: list
+        summary: '{{fields.label}}'
+        fields:
+        - name: ref
+          label: Referència
+          widget: hidden
+        - name: label
+          label: Lloc
+          widget: string
+          hint: Nom del lloc. No cal editar-ho.
+        - name: photo
+          label: Foto
+          widget: image
+          required: false
+          hint: Puja o tria la fotografia d'aquest lloc, del vostre banc d'imatges.
+  - name: fotos_activitats
+    label: Fotos · Activitats
+    description: Afegeix la fotografia de cada lloc. Si es deixa buit, es mostra l'emoji de sempre.
+    files:
+    - name: fitxer
+      label: Activitats
+      file: data/photos-activitats.json
+      fields:
+      - name: items
+        label: Activitats
+        label_singular: Activitat
+        widget: list
+        summary: '{{fields.label}}'
+        fields:
+        - name: ref
+          label: Referència
+          widget: hidden
+        - name: label
+          label: Lloc
+          widget: string
+          hint: Nom del lloc. No cal editar-ho.
+        - name: photo
+          label: Foto
+          widget: image
+          required: false
+          hint: Puja o tria la fotografia d'aquest lloc, del vostre banc d'imatges.
+  - name: fotos_patrimoni
+    label: Fotos · Patrimoni
+    description: Afegeix la fotografia de cada lloc. Si es deixa buit, es mostra l'emoji de sempre.
+    files:
+    - name: fitxer
+      label: Patrimoni
+      file: data/photos-patrimoni.json
+      fields:
+      - name: items
+        label: Patrimoni
+        label_singular: Element
+        widget: list
+        summary: '{{fields.label}}'
+        fields:
+        - name: ref
+          label: Referència
+          widget: hidden
+        - name: label
+          label: Lloc
+          widget: string
+          hint: Nom del lloc. No cal editar-ho.
+        - name: photo
+          label: Foto
+          widget: image
+          required: false
+          hint: Puja o tria la fotografia d'aquest lloc, del vostre banc d'imatges.
+  - name: fotos_familia
+    label: Fotos · Família
+    description: Afegeix la fotografia de cada lloc. Si es deixa buit, es mostra l'emoji de sempre.
+    files:
+    - name: fitxer
+      label: Amb nens
+      file: data/photos-familia.json
+      fields:
+      - name: items
+        label: Amb nens
+        label_singular: Activitat
+        widget: list
+        summary: '{{fields.label}}'
+        fields:
+        - name: ref
+          label: Referència
+          widget: hidden
+        - name: label
+          label: Lloc
+          widget: string
+          hint: Nom del lloc. No cal editar-ho.
+        - name: photo
+          label: Foto
+          widget: image
+          required: false
+          hint: Puja o tria la fotografia d'aquest lloc, del vostre banc d'imatges.
+  - name: fotos_pesca
+    label: Fotos · Pesca
+    description: Afegeix la fotografia de cada lloc. Si es deixa buit, es mostra l'emoji de sempre.
+    files:
+    - name: fitxer
+      label: Llocs de pesca
+      file: data/photos-pesca.json
+      fields:
+      - name: items
+        label: Llocs de pesca
+        label_singular: Lloc
+        widget: list
+        summary: '{{fields.label}}'
+        fields:
+        - name: ref
+          label: Referència
+          widget: hidden
+        - name: label
+          label: Lloc
+          widget: string
+          hint: Nom del lloc. No cal editar-ho.
+        - name: photo
+          label: Foto
+          widget: image
+          required: false
+          hint: Puja o tria la fotografia d'aquest lloc, del vostre banc d'imatges.
+  - name: fotos_bici
+    label: Fotos · Rutes en bici
+    description: Afegeix la fotografia de cada lloc. Si es deixa buit, es mostra l'emoji de sempre.
+    files:
+    - name: fitxer
+      label: Rutes en bici
+      file: data/photos-bici.json
+      fields:
+      - name: items
+        label: Rutes en bici
+        label_singular: Ruta
+        widget: list
+        summary: '{{fields.label}}'
+        fields:
+        - name: ref
+          label: Referència
+          widget: hidden
+        - name: label
+          label: Lloc
+          widget: string
+          hint: Nom del lloc. No cal editar-ho.
+        - name: photo
+          label: Foto
+          widget: image
+          required: false
+          hint: Puja o tria la fotografia d'aquest lloc, del vostre banc d'imatges.
+  - name: fotos_rutes
+    label: Fotos · Rutes i experiències
+    description: Afegeix la fotografia de cada lloc. Si es deixa buit, es mostra l'emoji de sempre.
+    files:
+    - name: fitxer
+      label: Rutes
+      file: data/photos-rutes.json
+      fields:
+      - name: items
+        label: Rutes
+        label_singular: Ruta
+        widget: list
+        summary: '{{fields.label}}'
+        fields:
+        - name: ref
+          label: Referència
+          widget: hidden
+        - name: label
+          label: Lloc
+          widget: string
+          hint: Nom del lloc. No cal editar-ho.
+        - name: photo
+          label: Foto
+          widget: image
+          required: false
+          hint: Puja o tria la fotografia d'aquest lloc, del vostre banc d'imatges.
+  - name: fotos_mercats
+    label: Fotos · Mercats
+    description: Afegeix la fotografia de cada lloc. Si es deixa buit, es mostra l'emoji de sempre.
+    files:
+    - name: fitxer
+      label: Mercats
+      file: data/photos-mercats.json
+      fields:
+      - name: items
+        label: Mercats
+        label_singular: Mercat
+        widget: list
+        summary: '{{fields.label}}'
+        fields:
+        - name: ref
+          label: Referència
+          widget: hidden
+        - name: label
+          label: Lloc
+          widget: string
+          hint: Nom del lloc. No cal editar-ho.
+        - name: photo
+          label: Foto
+          widget: image
+          required: false
+          hint: Puja o tria la fotografia d'aquest lloc, del vostre banc d'imatges.

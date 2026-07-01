@@ -1,0 +1,259 @@
+{
+  "items": [
+    {
+      "ref": "a01",
+      "label": "Hotel Rull · Deltebre",
+      "photo": ""
+    },
+    {
+      "ref": "a02",
+      "label": "Delta Hotel · Deltebre",
+      "photo": ""
+    },
+    {
+      "ref": "a03",
+      "label": "Hotel L'Algadir del Delta · Poblenou del Delta",
+      "photo": ""
+    },
+    {
+      "ref": "a04",
+      "label": "Hotel Mediterrani Blau · Els Eucaliptus (Amposta)",
+      "photo": ""
+    },
+    {
+      "ref": "a05",
+      "label": "Barraca de Salvador · Deltebre",
+      "photo": ""
+    },
+    {
+      "ref": "a06",
+      "label": "Caseta del Quet · Deltebre – Riumar",
+      "photo": ""
+    },
+    {
+      "ref": "a07",
+      "label": "Casa María Cinta (l'Ampolla) · L'Ampolla",
+      "photo": ""
+    },
+    {
+      "ref": "a08",
+      "label": "Lo Fangar (farm stay) · Deltebre",
+      "photo": ""
+    },
+    {
+      "ref": "a09",
+      "label": "Camping Eucaliptus · Els Eucaliptus (Amposta)",
+      "photo": ""
+    },
+    {
+      "ref": "a11",
+      "label": "Paradise Ebro (Riumar) · Riumar (Deltebre)",
+      "photo": ""
+    },
+    {
+      "ref": "a12",
+      "label": "Hotel Montsià · Amposta",
+      "photo": ""
+    },
+    {
+      "ref": "a13",
+      "label": "Hostal Can Marinés · Sant Carles de la Ràpita",
+      "photo": ""
+    },
+    {
+      "ref": "a15",
+      "label": "Riumar Pura Natura · Riumar (Deltebre)",
+      "photo": ""
+    },
+    {
+      "ref": "a16",
+      "label": "Studio Royal Delta · Deltebre",
+      "photo": ""
+    },
+    {
+      "ref": "a18",
+      "label": "Cases del Delta d'Ebre · Sant Jaume d'Enveja",
+      "photo": ""
+    },
+    {
+      "ref": "a19",
+      "label": "Hotel Mar d'Espills – Adults Only · Poblenou del Delta",
+      "photo": ""
+    },
+    {
+      "ref": "a20",
+      "label": "Villa Paquita Experience · Deltebre",
+      "photo": ""
+    },
+    {
+      "ref": "a21",
+      "label": "Torre Forcheron · Amposta",
+      "photo": ""
+    },
+    {
+      "ref": "a22",
+      "label": "Casa l'Espiga (Deltebre) · Deltebre",
+      "photo": ""
+    },
+    {
+      "ref": "a23",
+      "label": "Càmping Capfun - Aube (Riumar) · Riumar (Deltebre)",
+      "photo": ""
+    },
+    {
+      "ref": "a24",
+      "label": "Hotel Miami Mar · Sant Carles de la Ràpita",
+      "photo": ""
+    },
+    {
+      "ref": "a25",
+      "label": "Hotel Restaurante Can Batiste · Sant Carles de la Ràpita",
+      "photo": ""
+    },
+    {
+      "ref": "a26",
+      "label": "Agustí Hostal · Sant Carles de la Ràpita",
+      "photo": ""
+    },
+    {
+      "ref": "a27",
+      "label": "Hotel del Port · Sant Carles de la Ràpita",
+      "photo": ""
+    },
+    {
+      "ref": "a28",
+      "label": "Hotel Restaurante Juanito Platja · Sant Carles de la Ràpita",
+      "photo": ""
+    },
+    {
+      "ref": "a29",
+      "label": "Hotel Restaurant Llansola · Sant Carles de la Ràpita",
+      "photo": ""
+    },
+    {
+      "ref": "a30",
+      "label": "Hotel Medsur la Ràpita · Sant Carles de la Ràpita",
+      "photo": ""
+    },
+    {
+      "ref": "a31",
+      "label": "Nou Rocamar · Sant Carles de la Ràpita",
+      "photo": ""
+    },
+    {
+      "ref": "a32",
+      "label": "Hotel Flamingo Ampolla · L'Ampolla",
+      "photo": ""
+    },
+    {
+      "ref": "a33",
+      "label": "Hotel La Roca Plana · L'Ampolla",
+      "photo": ""
+    },
+    {
+      "ref": "a34",
+      "label": "Hotel Ampolla Sol · L'Ampolla",
+      "photo": ""
+    },
+    {
+      "ref": "a35",
+      "label": "FERGUS Cap Roig · L'Ampolla",
+      "photo": ""
+    },
+    {
+      "ref": "a36",
+      "label": "TAIGA Delta de l'Ebre · L'Ampolla",
+      "photo": ""
+    },
+    {
+      "ref": "a37",
+      "label": "L'Hotelet del Delta · Deltebre",
+      "photo": ""
+    },
+    {
+      "ref": "a38",
+      "label": "Hotel Mas Prades · Deltebre",
+      "photo": ""
+    },
+    {
+      "ref": "a39",
+      "label": "Casa Rural Masia Tinet · Deltebre",
+      "photo": ""
+    },
+    {
+      "ref": "a40",
+      "label": "Hotel Carlos III · Alcanar i les Cases (fora del Delta)",
+      "photo": ""
+    },
+    {
+      "ref": "a41",
+      "label": "Tancat de Codorniu · Alcanar i les Cases (fora del Delta)",
+      "photo": ""
+    },
+    {
+      "ref": "a42",
+      "label": "Kampaoh Delta del Ebro · Sant Carles de la Ràpita",
+      "photo": ""
+    },
+    {
+      "ref": "a43",
+      "label": "Mas Midó · Sant Jaume d'Enveja",
+      "photo": ""
+    },
+    {
+      "ref": "a44",
+      "label": "Casa Cusa · Sant Jaume d'Enveja",
+      "photo": ""
+    },
+    {
+      "ref": "a45",
+      "label": "Mas Illa de Riu · Sant Jaume d'Enveja",
+      "photo": ""
+    },
+    {
+      "ref": "a46",
+      "label": "Casa Rural Lo Segador · Poblenou del Delta",
+      "photo": ""
+    },
+    {
+      "ref": "a47",
+      "label": "Cal Gasso · Poblenou del Delta",
+      "photo": ""
+    },
+    {
+      "ref": "a48",
+      "label": "La Marquesa - Ca L'Ona · Poblenou del Delta",
+      "photo": ""
+    },
+    {
+      "ref": "a49",
+      "label": "Casa Rural Mas del Tancat · Amposta",
+      "photo": ""
+    },
+    {
+      "ref": "a50",
+      "label": "Mas d'en Chapa · Amposta",
+      "photo": ""
+    },
+    {
+      "ref": "a51",
+      "label": "Cau d'Amor · L'Ampolla",
+      "photo": ""
+    },
+    {
+      "ref": "a52",
+      "label": "Villa Carmen · Alcanar i les Cases (fora del Delta)",
+      "photo": ""
+    },
+    {
+      "ref": "a53",
+      "label": "Casa Rural Delta del Ebro Villafeliche · Camarles",
+      "photo": ""
+    },
+    {
+      "ref": "a54",
+      "label": "Les casetes de Camarles · Camarles",
+      "photo": ""
+    }
+  ]
+}

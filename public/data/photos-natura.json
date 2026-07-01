@@ -1,0 +1,49 @@
+{
+  "items": [
+    {
+      "ref": "0",
+      "label": "Parc Natural del Delta de l'Ebre",
+      "photo": ""
+    },
+    {
+      "ref": "1",
+      "label": "L'Encanyissada",
+      "photo": ""
+    },
+    {
+      "ref": "2",
+      "label": "La Tancada",
+      "photo": ""
+    },
+    {
+      "ref": "3",
+      "label": "Bassa de les Olles",
+      "photo": ""
+    },
+    {
+      "ref": "4",
+      "label": "El Garxal",
+      "photo": ""
+    },
+    {
+      "ref": "5",
+      "label": "Illa de Buda",
+      "photo": ""
+    },
+    {
+      "ref": "6",
+      "label": "Ullals de Baltasar",
+      "photo": ""
+    },
+    {
+      "ref": "7",
+      "label": "Punta de la Banya i Salines",
+      "photo": ""
+    },
+    {
+      "ref": "8",
+      "label": "Ecomuseu i Casa de Fusta",
+      "photo": ""
+    }
+  ]
+}
