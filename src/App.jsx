@@ -135,11 +135,21 @@ function Thumb({src, emoji, alt, size = 44, emojiCls = "text-2xl"}) {
 }
 
 /* Card for generic items (nature, villages, activities, practical, heritage, etc.) */
+const EMO = {
+  park:"🏞️", lagoon:"💧", island:"🏝️", spring:"⛲", restricted:"🚫", museum:"🏛️",
+  wild:"🏝️", service:"🏖️", kite:"🪁", urban:"🏙️",
+  bike:"🚲", kayak:"🛶", boat:"⛵", bird:"🐦", jeep:"🚙", sup:"🏄", horse:"🐴", hike:"🥾",
+  rice:"🌾", salt:"🧂", oil:"🫒", honey:"🍯", citrus:"🍊", carxofa:"🥬", shell:"🐚", shrimp:"🦐", galera:"🦐", anguila:"🐟", bag:"🛍️",
+  bed:"🛏️", car:"🚗", tel:"📞", phone:"📞", map:"🗺️", cal:"📅",
+  river:"🐟", sea:"🌊", surf:"🏄", rules:"📋", boat2:"⛵"
+};
+const emo = (x) => (x && EMO[x]) ? EMO[x] : x;
+
 function ItemCard({item, lang, emoji, onClick, gradient}) {
   return (
     <button onClick={onClick} className="w-full text-left rounded-2xl overflow-hidden transition-all hover:scale-[1.003] mb-2.5" style={{background:V.w7,border:`1px solid ${V.w14}`}}>
       <div className="h-16 flex items-center px-4 gap-3" style={{background:gradient||"linear-gradient(135deg,rgba(15,74,82,.4),rgba(44,106,92,.3))"}}>
-        <Thumb src={item.photo} emoji={emoji || item.icon || "📌"} alt={tr(item.name, lang)}/>
+        <Thumb src={item.photo} emoji={emo(emoji) || emo(item.icon) || "📌"} alt={tr(item.name, lang)}/>
         <div className="min-w-0 flex-1">
           <div className="font-medium text-sm truncate">{tr(item.name, lang)}</div>
           {item.tagline && <div className="text-xs opacity-50 truncate">{tr(item.tagline, lang)}</div>}
@@ -579,8 +589,8 @@ function ContentScreen({data, lang, nav, title, intro, emoji, detailKey, gradien
 function ContentDetailScreen({item, lang, nav, parentTitle, geo}) {
   return (<div className="max-w-md mx-auto w-full px-5 py-5">
     <Header title={parentTitle} onBack={()=>nav.pop()}/>
-    {isRealPhoto(item.photo) && <PhotoHero src={item.photo} emoji={item.icon||"📌"} bg={V.hero2} alt={tr(item.name,lang)}/>}
-    <div className="flex items-center gap-3 mb-3"><span className="text-3xl" aria-hidden="true">{item.icon||"📌"}</span>
+    {isRealPhoto(item.photo) && <PhotoHero src={item.photo} emoji={emo(item.icon)||"📌"} bg={V.hero2} alt={tr(item.name,lang)}/>}
+    <div className="flex items-center gap-3 mb-3"><span className="text-3xl" aria-hidden="true">{emo(item.icon)||"📌"}</span>
       <div><h2 className="text-lg font-semibold" style={{fontFamily:"Georgia,serif",color:V.title}}>{tr(item.name,lang)}</h2>
         {item.tagline&&<p className="text-xs opacity-50 italic">{tr(item.tagline,lang)}</p>}</div></div>
     {item.lead&&<p className="text-sm leading-relaxed mb-4 opacity-75">{tr(item.lead,lang)}</p>}
@@ -603,7 +613,7 @@ function ContentDetailScreen({item, lang, nav, parentTitle, geo}) {
       if(!nearby.length) return null;
       return <div className="mt-5"><h3 className="text-xs font-bold uppercase tracking-wider opacity-40 mb-2">{tr({CA:"A prop",ES:"Cerca",EN:"Nearby",FR:"À proximité",DE:"In der Nähe",NL:"In de buurt",PT:"Perto"},lang)}</h3>
         {nearby.map((n,i)=><button key={i} onClick={()=>nav.push("contentDetail",{item:n,parentTitle:parentTitle})} className="flex items-center gap-2 w-full text-left px-2.5 py-2 rounded-lg mb-1" style={{background:V.w3}}>
-          <span className="text-sm" aria-hidden="true">{n.icon||"📍"}</span><div className="flex-1 min-w-0 text-xs font-medium truncate">{tr(n.name,lang)}</div><span className="text-xs opacity-40 shrink-0">{n.d.toFixed(1)}km</span>
+          <span className="text-sm" aria-hidden="true">{emo(n.icon)||"📍"}</span><div className="flex-1 min-w-0 text-xs font-medium truncate">{tr(n.name,lang)}</div><span className="text-xs opacity-40 shrink-0">{n.d.toFixed(1)}km</span>
         </button>)}</div>;
     })()}
   </div>);
