@@ -576,7 +576,7 @@ function ContentScreen({data, lang, nav, title, intro, emoji, detailKey, gradien
   </div>);
 }
 
-function ContentDetailScreen({item, lang, nav, parentTitle}) {
+function ContentDetailScreen({item, lang, nav, parentTitle, geo}) {
   return (<div className="max-w-md mx-auto w-full px-5 py-5">
     <Header title={parentTitle} onBack={()=>nav.pop()}/>
     {isRealPhoto(item.photo) && <PhotoHero src={item.photo} emoji={item.icon||"📌"} bg={V.hero2} alt={tr(item.name,lang)}/>}
@@ -1703,7 +1703,7 @@ function AppInner() {
       {c.screen==="about" && <AboutScreen lang={lang} nav={nav}/>}
       {c.screen==="accessibility" && <AccessibilityScreen lang={lang} nav={nav}/>}
       {c.screen==="transport" && <ContentScreen data={D_TRANSPORT_ITEMS} {...cp} title={tr({CA:"Com arribar i moure's",ES:"Cómo llegar y moverse",EN:"Getting there & around",FR:"Comment s'y rendre et se déplacer",DE:"Anreise & Fortbewegung",NL:"Bereikbaarheid & vervoer",PT:"Como chegar e deslocar-se"},lang)} emoji="🚗"/>}
-      {c.screen==="contentDetail" && <ContentDetailScreen item={c.item} lang={lang} nav={nav} parentTitle={c.parentTitle}/>}</main>
+      {c.screen==="contentDetail" && <ContentDetailScreen {...cp} item={c.item} parentTitle={c.parentTitle}/>}</main>
 
       {c.screen!=="home" && c.screen!=="lang" && (
         <nav aria-label={tr({CA:"Navegació principal",ES:"Navegación principal",EN:"Main navigation",FR:"Navigation principale",DE:"Hauptnavigation",NL:"Hoofdnavigatie",PT:"Navegação principal"},lang)} className="fixed bottom-0 left-0 right-0 z-40 flex items-center justify-around py-2 px-4" style={{background:V.floatBg,backdropFilter:"blur(12px)",borderTop:`1px solid ${V.w10}`,paddingBottom:"max(8px,env(safe-area-inset-bottom))"}}>
