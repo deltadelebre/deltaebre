@@ -1,0 +1,38 @@
+# ─── Configuració de desplegament a Netlify ───
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Capçaleres de seguretat raonables (no trenquen el mapa ni la meteo).
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+    Permissions-Policy = "geolocation=(self)"
+
+# El JSON del CMS sempre fresc (l'app ja demana no-store, això ho reforça).
+[[headers]]
+  for = "/data/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# SPA fallback: qualsevol ruta desconeguda → index.html (l'app fa servir hash).
+# Els fitxers reals (/admin, /data, assets) es serveixen abans que aquesta regla.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# ─── NOTA sobre el CMS (/admin) ───
+# Autenticació recomanada a Netlify: backend "github" + Netlify com a proveïdor OAuth.
+# 1) A GitHub: crea una OAuth App (Settings → Developer settings → OAuth Apps).
+#    - Authorization callback URL: https://api.netlify.com/auth/done
+# 2) A Netlify: Site configuration → Access & security → OAuth →
+#    Install provider "GitHub" amb el Client ID/Secret de l'OAuth App.
+# 3) A public/admin/config.yml: backend github + repo "org/repositori" + branch.
+#    No cal base_url ni servidor propi.

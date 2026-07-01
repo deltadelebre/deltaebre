@@ -1,0 +1,355 @@
+{
+  "items": [
+    {
+      "id": "ev01",
+      "month": 6,
+      "dayFrom": 19,
+      "dayTo": 25,
+      "dayLabel": "19-25",
+      "type": "festa",
+      "ic": "🎆",
+      "town": {
+        "CA": "L'Ampolla",
+        "ES": "L'Ampolla",
+        "EN": "L'Ampolla",
+        "FR": "L'Ampolla",
+        "DE": "L'Ampolla",
+        "NL": "L'Ampolla",
+        "PT": "L'Ampolla"
+      },
+      "name": {
+        "CA": "Festa Major de l'Ampolla (Sant Joan)",
+        "ES": "Fiesta Mayor de l'Ampolla (San Juan)",
+        "EN": "Festa Major l'Ampolla (Sant Joan)",
+        "FR": "Fête Majeure de l'Ampolla (Saint-Jean)",
+        "DE": "Hauptfest L'Ampolla (Johannes)",
+        "NL": "Hoofdfeest L'Ampolla (Sint-Jan)",
+        "PT": "Festa Mayor de l'Ampolla (São João)"
+      }
+    },
+    {
+      "id": "ev02",
+      "month": 6,
+      "dayFrom": 27,
+      "dayTo": 27,
+      "dayLabel": "27",
+      "type": "gastro",
+      "ic": "🐟",
+      "town": {
+        "CA": "les Cases d'Alcanar",
+        "ES": "les Cases d'Alcanar",
+        "EN": "les Cases d'Alcanar",
+        "FR": "les Cases d'Alcanar",
+        "DE": "les Cases d'Alcanar",
+        "NL": "les Cases d'Alcanar",
+        "PT": "les Cases d'Alcanar"
+      },
+      "name": {
+        "CA": "Festa dels Pescadors (Sant Pere)",
+        "ES": "Fiesta de los Pescadores (San Pedro)",
+        "EN": "Fishermen's Festival (Sant Pere)",
+        "FR": "Fête des Pêcheurs (Saint-Pierre)",
+        "DE": "Fischerfest (St. Peter)",
+        "NL": "Vissersfeest (Sint-Pieter)",
+        "PT": "Festa dos Pescadores (São Pedro)"
+      }
+    },
+    {
+      "id": "ev03",
+      "month": 7,
+      "dayFrom": 2,
+      "dayTo": 5,
+      "dayLabel": "2-5",
+      "type": "festival",
+      "ic": "🎵",
+      "town": {
+        "CA": "Tivissa (Ribera d'Ebre)",
+        "ES": "Tivissa (Ribera del Ebro)",
+        "EN": "Tivissa (Ribera d'Ebre)",
+        "FR": "Tivissa (Ribera d'Ebre)",
+        "DE": "Tivissa (Ribera d'Ebre)",
+        "NL": "Tivissa (Ribera d'Ebre)",
+        "PT": "Tivissa (Ribera d'Ebre)"
+      },
+      "name": {
+        "CA": "BotCamp (Eufònic) a Tivissa",
+        "ES": "BotCamp (Eufònic) en Tivissa",
+        "EN": "BotCamp (Eufònic) in Tivissa",
+        "FR": "BotCamp (Eufònic) à Tivissa",
+        "DE": "BotCamp (Eufònic) in Tivissa",
+        "NL": "BotCamp (Eufònic) in Tivissa",
+        "PT": "BotCamp (Eufònic) em Tivissa"
+      }
+    },
+    {
+      "id": "ev04",
+      "month": 7,
+      "dayFrom": 5,
+      "dayTo": 13,
+      "dayLabel": "5-13",
+      "type": "festival",
+      "ic": "💃",
+      "town": {
+        "CA": "Deltebre",
+        "ES": "Deltebre",
+        "EN": "Deltebre",
+        "FR": "Deltebre",
+        "DE": "Deltebre",
+        "NL": "Deltebre",
+        "PT": "Deltebre"
+      },
+      "name": {
+        "CA": "Festival Deltebre Dansa",
+        "ES": "Festival Deltebre Dansa",
+        "EN": "Deltebre Dansa Festival",
+        "FR": "Festival Deltebre Dansa",
+        "DE": "Festival Deltebre Dansa",
+        "NL": "Festival Deltebre Dansa",
+        "PT": "Festival Deltebre Dansa"
+      }
+    },
+    {
+      "id": "ev05",
+      "month": 7,
+      "dayFrom": 9,
+      "dayTo": 12,
+      "dayLabel": "9-12",
+      "type": "festival",
+      "ic": "🎨",
+      "town": {
+        "CA": "Diverses poblacions de les Terres de l'Ebre",
+        "ES": "Diversas poblaciones de las Terres de l'Ebre",
+        "EN": "Various Terres de l'Ebre towns",
+        "FR": "Diverses villes des Terres de l'Ebre",
+        "DE": "Verschiedene Orte der Terres de l'Ebre",
+        "NL": "Diverse Terres de l'Ebre gemeenten",
+        "PT": "Várias localidades das Terres de l'Ebre"
+      },
+      "name": {
+        "CA": "Pòrtic Eufònic 2026",
+        "ES": "Pórtico Eufònic 2026",
+        "EN": "Eufònic 2026 Prologue",
+        "FR": "Portique Eufònic 2026",
+        "DE": "Eufònic 2026 Vorspiel",
+        "NL": "Eufònic 2026 Proloog",
+        "PT": "Pórtico Eufònic 2026"
+      }
+    },
+    {
+      "id": "ev06",
+      "month": 7,
+      "dayFrom": 16,
+      "dayTo": 18,
+      "dayLabel": "16-18",
+      "type": "festival",
+      "ic": "🔈",
+      "town": {
+        "CA": "Amposta (epicentre) + 9 municipis",
+        "ES": "Amposta (epicentro) + 9 municipios",
+        "EN": "Amposta (main venue) + 9 towns",
+        "FR": "Amposta (centre) + 9 communes",
+        "DE": "Amposta (Hauptort) + 9 Gemeinden",
+        "NL": "Amposta (centrum) + 9 gemeenten",
+        "PT": "Amposta (epicentro) + 9 municípios"
+      },
+      "name": {
+        "CA": "Eufònic 2026 — 15a edició ★",
+        "ES": "Eufònic 2026 — 15ª edición ★",
+        "EN": "Eufònic 2026 — 15th edition ★",
+        "FR": "Eufònic 2026 — 15e édition ★",
+        "DE": "Eufònic 2026 — 15. Ausgabe ★",
+        "NL": "Eufònic 2026 — 15e editie ★",
+        "PT": "Eufònic 2026 — 15ª edição ★"
+      }
+    },
+    {
+      "id": "ev07",
+      "month": 7,
+      "dayFrom": 20,
+      "dayTo": 28,
+      "dayLabel": "20-28",
+      "type": "festa",
+      "ic": "🎆",
+      "town": {
+        "CA": "Sant Jaume d'Enveja",
+        "ES": "Sant Jaume d'Enveja",
+        "EN": "Sant Jaume d'Enveja",
+        "FR": "Sant Jaume d'Enveja",
+        "DE": "Sant Jaume d'Enveja",
+        "NL": "Sant Jaume d'Enveja",
+        "PT": "Sant Jaume d'Enveja"
+      },
+      "name": {
+        "CA": "Festa Major de Sant Jaume d'Enveja",
+        "ES": "Fiesta Mayor de Sant Jaume d'Enveja",
+        "EN": "Sant Jaume d'Enveja Main Festival",
+        "FR": "Fête Majeure de Sant Jaume d'Enveja",
+        "DE": "Hauptfest Sant Jaume d'Enveja",
+        "NL": "Hoofdfeest Sant Jaume d'Enveja",
+        "PT": "Festa Major de Sant Jaume d'Enveja"
+      }
+    },
+    {
+      "id": "ev08",
+      "month": 7,
+      "dayFrom": 25,
+      "dayTo": 25,
+      "dayLabel": "25",
+      "type": "gastro",
+      "ic": "🧀",
+      "town": {
+        "CA": "les Cases d'Alcanar",
+        "ES": "les Cases d'Alcanar",
+        "EN": "les Cases d'Alcanar",
+        "FR": "les Cases d'Alcanar",
+        "DE": "les Cases d'Alcanar",
+        "NL": "les Cases d'Alcanar",
+        "PT": "les Cases d'Alcanar"
+      },
+      "name": {
+        "CA": "Diada del Musclo del Delta",
+        "ES": "Diada del Mejillón del Delta",
+        "EN": "Delta Mussel Day",
+        "FR": "Journée des Moules du Delta",
+        "DE": "Delta-Muscheltag",
+        "NL": "Delta Mosseldag",
+        "PT": "Dia do Mexilhão do Delta"
+      }
+    },
+    {
+      "id": "ev09",
+      "month": 7,
+      "dayFrom": 18,
+      "dayTo": 28,
+      "dayLabel": "18-28",
+      "type": "festa",
+      "ic": "🎆",
+      "town": {
+        "CA": "Sant Carles de la Ràpita",
+        "ES": "Sant Carles de la Ràpita",
+        "EN": "Sant Carles de la Ràpita",
+        "FR": "Sant Carles de la Ràpita",
+        "DE": "Sant Carles de la Ràpita",
+        "NL": "Sant Carles de la Ràpita",
+        "PT": "Sant Carles de la Ràpita"
+      },
+      "name": {
+        "CA": "Festa Major de la Ràpita",
+        "ES": "Fiesta Mayor de la Ràpita",
+        "EN": "La Ràpita Main Festival",
+        "FR": "Fête Majeure de la Ràpita",
+        "DE": "Hauptfest La Ràpita",
+        "NL": "Hoofdfeest La Ràpita",
+        "PT": "Festa Major de La Ràpita"
+      }
+    },
+    {
+      "id": "ev10",
+      "month": 8,
+      "dayFrom": 1,
+      "dayTo": 1,
+      "dayLabel": "1 ag.",
+      "type": "cultura",
+      "ic": "🔮",
+      "town": {
+        "CA": "L'Ampolla",
+        "ES": "L'Ampolla",
+        "EN": "L'Ampolla",
+        "FR": "L'Ampolla",
+        "DE": "L'Ampolla",
+        "NL": "L'Ampolla",
+        "PT": "L'Ampolla"
+      },
+      "name": {
+        "CA": "Nit Màgica de l'Ampolla",
+        "ES": "Noche Mágica de l'Ampolla",
+        "EN": "Magic Night of l'Ampolla",
+        "FR": "Nuit Magique de l'Ampolla",
+        "DE": "Magische Nacht von l'Ampolla",
+        "NL": "Magische Nacht van l'Ampolla",
+        "PT": "Noite Mágica de l'Ampolla"
+      }
+    },
+    {
+      "id": "ev11",
+      "month": 8,
+      "dayFrom": 8,
+      "dayTo": 17,
+      "dayLabel": "8-17",
+      "type": "festa",
+      "ic": "🎆",
+      "town": {
+        "CA": "Deltebre",
+        "ES": "Deltebre",
+        "EN": "Deltebre",
+        "FR": "Deltebre",
+        "DE": "Deltebre",
+        "NL": "Deltebre",
+        "PT": "Deltebre"
+      },
+      "name": {
+        "CA": "Festa Major de Deltebre",
+        "ES": "Fiesta Mayor de Deltebre",
+        "EN": "Deltebre Main Festival",
+        "FR": "Fête Majeure de Deltebre",
+        "DE": "Hauptfest Deltebre",
+        "NL": "Hoofdfeest Deltebre",
+        "PT": "Festa Major de Deltebre"
+      }
+    },
+    {
+      "id": "ev12",
+      "month": 8,
+      "dayFrom": 8,
+      "dayTo": 17,
+      "dayLabel": "8-17",
+      "type": "festa",
+      "ic": "🎆",
+      "town": {
+        "CA": "Amposta",
+        "ES": "Amposta",
+        "EN": "Amposta",
+        "FR": "Amposta",
+        "DE": "Amposta",
+        "NL": "Amposta",
+        "PT": "Amposta"
+      },
+      "name": {
+        "CA": "Festa Major d'Amposta",
+        "ES": "Fiesta Mayor de Amposta",
+        "EN": "Amposta Main Festival",
+        "FR": "Fête Majeure d'Amposta",
+        "DE": "Hauptfest Amposta",
+        "NL": "Hoofdfeest Amposta",
+        "PT": "Festa Major de Amposta"
+      }
+    },
+    {
+      "id": "ev13",
+      "month": 9,
+      "dayFrom": 1,
+      "dayTo": 30,
+      "dayLabel": "set.",
+      "type": "natura",
+      "ic": "🌾",
+      "town": {
+        "CA": "Tot el delta",
+        "ES": "Todo el delta",
+        "EN": "Whole delta",
+        "FR": "Tout le delta",
+        "DE": "Gesamtes Delta",
+        "NL": "Hele delta",
+        "PT": "Todo o delta"
+      },
+      "name": {
+        "CA": "Collita de l'arròs (setembre-octubre)",
+        "ES": "Cosecha del arroz (septiembre-octubre)",
+        "EN": "Rice harvest (September-October)",
+        "FR": "Récolte du riz (septembre-octobre)",
+        "DE": "Reisernte (September-Oktober)",
+        "NL": "Rijstoogst (september-oktober)",
+        "PT": "Colheita do arroz (setembro-outubro)"
+      }
+    }
+  ]
+}

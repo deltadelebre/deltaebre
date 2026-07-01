@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root { height: 100%; }
+body { margin: 0; -webkit-tap-highlight-color: transparent; }
+
+/* Indicador de focus visible per a navegació amb teclat (accessibilitat WCAG 2.1) */
+:focus-visible {
+  outline: 2px solid #5dcaa5;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+:focus:not(:focus-visible) { outline: none; }

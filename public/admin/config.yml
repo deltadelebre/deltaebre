@@ -1,0 +1,148 @@
+# ───────────────────────────────────────────────────────────────
+# Delta de l'Ebre · Configuració del CMS (Sveltia CMS / Decap CMS)
+# Edita aquest fitxer per afegir o treure col·leccions.
+# Documentació: https://github.com/sveltia/sveltia-cms  ·  https://decapcms.org
+# ───────────────────────────────────────────────────────────────
+
+# ── On es desa el contingut ──────────────────────────────────────
+# Omple "repo" amb el teu repositori de GitHub (format: organitzacio/projecte).
+backend:
+  name: github
+  repo: ORGANITZACIO/REPOSITORI   # ← CANVIA AIXÒ
+  branch: main
+
+# Per editar en LOCAL sense desplegar (recomanat per provar):
+#   1) npm i -g @sveltia/cms-proxy-server   (o: npx @sveltia/cms-proxy-server)
+#   2) arrenca'l a l'arrel del projecte
+#   3) obre /admin/ amb el lloc servit en local
+local_backend: true
+
+# Idioma de la interfície del CMS (l'editor).
+locale: ca
+
+# Carpeta per a imatges que pugi l'editor (opcional).
+media_folder: "data/photos"
+public_folder: "/data/photos"
+
+collections:
+  # ═══════════════════════════════════════════════════════════════
+  # AGENDA / ESDEVENIMENTS  →  data/events.json
+  # ═══════════════════════════════════════════════════════════════
+  - name: agenda
+    label: "Agenda · Esdeveniments"
+    description: "Festes, fires i activitats del delta. Apareixen a la pantalla «Agenda» de l'app."
+    files:
+      - name: events
+        label: "Llista d'esdeveniments"
+        file: "data/events.json"
+        description: "Cada element és un esdeveniment. L'ordre no importa: l'app els ordena per data."
+        fields:
+          - name: items
+            label: "Esdeveniments"
+            label_singular: "Esdeveniment"
+            widget: list
+            summary: "{{fields.name.CA}} · {{fields.dayLabel}}"
+            fields:
+              - { name: id, label: "ID (únic)", widget: string, hint: "Identificador curt i únic, p. ex. ev14. No es mostra." }
+              - { name: month, label: "Mes (1–12)", widget: number, value_type: int, min: 1, max: 12 }
+              - { name: dayFrom, label: "Dia d'inici", widget: number, value_type: int, min: 1, max: 31 }
+              - { name: dayTo, label: "Dia de fi", widget: number, value_type: int, min: 1, max: 31, required: false }
+              - { name: dayLabel, label: "Etiqueta de dies", widget: string, hint: "El que es mostra, p. ex. «19-25» o «23»." }
+              - name: type
+                label: "Tipus"
+                widget: select
+                options: ["festa", "gastro", "festival", "cultura", "natura"]
+                hint: "Determina el color de l'etiqueta."
+              - { name: ic, label: "Emoji", widget: string, hint: "Un sol emoji, p. ex. 🎆 🎶 🍚 🦩." }
+              - name: town
+                label: "Població"
+                widget: object
+                collapsed: true
+                fields:
+                  - { name: CA, label: "Català", widget: string }
+                  - { name: ES, label: "Español", widget: string }
+                  - { name: EN, label: "English", widget: string }
+                  - { name: FR, label: "Français", widget: string }
+                  - { name: DE, label: "Deutsch", widget: string }
+                  - { name: NL, label: "Nederlands", widget: string }
+                  - { name: PT, label: "Português", widget: string }
+              - name: name
+                label: "Nom de l'esdeveniment"
+                widget: object
+                fields:
+                  - { name: CA, label: "Català", widget: string }
+                  - { name: ES, label: "Español", widget: string }
+                  - { name: EN, label: "English", widget: string }
+                  - { name: FR, label: "Français", widget: string }
+                  - { name: DE, label: "Deutsch", widget: string }
+                  - { name: NL, label: "Nederlands", widget: string }
+                  - { name: PT, label: "Português", widget: string }
+
+  # ═══════════════════════════════════════════════════════════════
+  # RESTAURANTS (inclou HORARIS)  →  data/restaurants.json
+  # ═══════════════════════════════════════════════════════════════
+  - name: restaurants
+    label: "Restaurants i horaris"
+    description: "Restaurants del delta amb els seus horaris. L'app els agrupa per població."
+    files:
+      - name: restaurants
+        label: "Llista de restaurants"
+        file: "data/restaurants.json"
+        fields:
+          - name: items
+            label: "Restaurants"
+            label_singular: "Restaurant"
+            widget: list
+            summary: "{{fields.name}} · {{fields.town}}"
+            fields:
+              - { name: name, label: "Nom", widget: string }
+              - name: town
+                label: "Població"
+                widget: select
+                hint: "Tria de la llista perquè l'app els agrupi bé (no escriguis a mà)."
+                options:
+                  - "Deltebre"
+                  - "Riumar"
+                  - "Sant Carles de la Ràpita"
+                  - "Amposta"
+                  - "Sant Jaume d'Enveja"
+                  - "L'Ampolla"
+                  - "L'Aldea"
+                  - "Poblenou del Delta"
+                  - "Alcanar i les Cases"
+                  - "Terres de l'Ebre"
+              - name: hours
+                label: "Horaris (dilluns → diumenge)"
+                widget: list
+                hint: "EXACTAMENT 7 entrades, en ordre de dilluns a diumenge. Format: «13:00–16:00 / 20:00–22:00». Deixa l'entrada buida el dia que tanqui."
+                field: { name: dia, label: "Horari del dia", widget: string, required: false }
+              - name: c
+                label: "Tipus de cuina"
+                widget: select
+                required: false
+                options: ["autor", "producto", "mercado", "tapas", "arroceria", "arrosMar", "casera", "ostras", "marineraVistas", "marisco", "tapasCat", "griega", "italiana", "japonesa", "pizzeria", "bar"]
+              - { name: price, label: "Preu", widget: select, required: false, options: ["", "€", "€€", "€€€", "€€€€"] }
+              - { name: rating, label: "Valoració (0–5)", widget: number, required: false, value_type: float, min: 0, max: 5, step: 0.1 }
+              - { name: count, label: "Nº de ressenyes", widget: number, required: false, value_type: int, min: 0 }
+              - { name: addr, label: "Adreça", widget: string, required: false }
+              - { name: phone, label: "Telèfon", widget: string, required: false }
+              - name: desc
+                label: "Descripció (7 idiomes)"
+                widget: object
+                required: false
+                fields:
+                  - { name: CA, label: "Català", widget: text, required: false }
+                  - { name: ES, label: "Español", widget: text, required: false }
+                  - { name: EN, label: "English", widget: text, required: false }
+                  - { name: FR, label: "Français", widget: text, required: false }
+                  - { name: DE, label: "Deutsch", widget: text, required: false }
+                  - { name: NL, label: "Nederlands", widget: text, required: false }
+                  - { name: PT, label: "Português", widget: text, required: false }
+              - { name: web, label: "Lloc web", widget: string, required: false, hint: "URL completa amb https://" }
+              - { name: chef, label: "Xef", widget: string, required: false }
+              - { name: tg, label: "Etiquetes", widget: list, required: false, hint: "Paraules clau, p. ex. pulpo, arroces, vistasAlMar." }
+              - { name: lat, label: "Latitud", widget: number, required: false, value_type: float, step: 0.000001 }
+              - { name: lng, label: "Longitud", widget: number, required: false, value_type: float, step: 0.000001 }
+              - { name: pid, label: "Google Place ID", widget: string, required: false }
+              - { name: photo, label: "Foto (URL o marcador)", widget: string, required: false, hint: "URL d'imatge (https://…). Si es deixa el marcador __PH_n__ es mostra l'emoji." }
+              - { name: icon, label: "Emoji de reserva", widget: string, required: false }
